@@ -1,0 +1,45 @@
+<template>
+    <div>
+    <img :src="avatar" width="75" height="75" class="mt-3 rounded">
+
+<h1 class="display-4" v-text="user.name"></h1>
+<form v-if="canUpdate"  method="POST" enctype="multipart/form-data">
+    <input type="file" name="avatar" accept="image/*" @change="onChange">
+    </form>
+
+    </div>
+</template>
+
+<script>
+    export default{
+        props:['user'],
+        data(){
+            return{
+                avatar:this.user.avatar_path
+            };
+        },
+        computed:{
+            canUpdate(){
+            return this.authorize(user=>user.id===this.user.id)
+            }
+        },
+        methods:{
+            onChange(e){
+                if(! e.target.files.length) return;
+                let file=e.target.files[0];
+                let reader=new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload=e=>{
+                    this.avatar=e.target.result;  
+                };
+                this.persist(file);
+            },
+            persist(file){
+                let data=new FormData();
+                data.append('avatar',file);
+                axios.post('/api/users/$(this.user.name)/avatar',data)
+                .then(()=>flash('Avatar Uploaded!'));
+            }
+        }
+    }
+</script>
