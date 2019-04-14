@@ -58,7 +58,8 @@ class ThreadController extends Controller
      */
     public function create()
     {
-     return view('threads.create');   
+        $channels=Channel::all();
+     return view('threads.create',compact('channels'));   
     }
 
     /**
@@ -69,8 +70,7 @@ class ThreadController extends Controller
      */
     public function store(Request $request,Recaptcha $recaptcha)
     {
-        
-        
+                
         $this->validate($request,[
             'title'=>'required|spamfree',
             'body'=>'required|spamfree',

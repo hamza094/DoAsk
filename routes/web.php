@@ -27,6 +27,12 @@ Route::patch('threads/{channel}/{thread}', 'ThreadController@update');
 Route::post('threads', 'ThreadController@store');
 Route::get('threads/{channel}', 'ThreadController@index');
 
+Route::get('/channels','ChannelController@index');
+Route::get('/allchannel','ChannelController@show');
+Route::delete('channels/{channel}', 'ChannelController@destroy');
+Route::post('/channels','ChannelController@store');
+Route::patch('/channels/{channel}','ChannelController@update');
+
 Route::post('locked-threads/{thread}','LockedThreadController@store')->name('locked-thread.store')->middleware('admin');
 Route::delete('locked-threads/{thread}','LockedThreadController@destroy')->name('locked-thread.destroy')->middleware('admin');
 

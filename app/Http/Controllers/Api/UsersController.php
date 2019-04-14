@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 
-class UsersController extends Controller
+class ChannelsController extends Controller
 {
     public function index(){
         $search=request('name');

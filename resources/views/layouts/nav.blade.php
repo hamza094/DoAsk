@@ -11,6 +11,9 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                        @if(auth()->check())
+                       <li class="nav-item">
+                                <a class="nav-link" href="/channels">All Channels</a>
+                                    </li>
                         <li class="nav-item">
                                 <a class="nav-link" href="threads/create">Create Thread</a>
                                     </li>
@@ -45,7 +48,7 @@
   </a>
 
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-   @foreach($channels as $channel)
+   @foreach(App\Channel::all() as $channel)
     <a class="dropdown-item" href="/threads/{{$channel->slug}}">{{$channel->name}}</a>
     @endforeach
   </div>

@@ -7,11 +7,27 @@
 
 window.Vue = require('vue');
 
+require('./bootstrap');
+
 import InstantSearch from 'vue-instantsearch';
 Vue.use(InstantSearch);
 
-require('./bootstrap');
+import moment from 'moment';
 
+import { Form, HasError, AlertError } from 'vform';
+
+window.Form=Form;
+
+Vue.component(HasError.name, HasError);
+Vue.component(AlertError.name, AlertError);
+
+Vue.filter('upText',function(text){
+     return text.charAt(0).toUpperCase() + text.slice(1)
+});
+
+Vue.filter('myDate',function(created){
+   return moment(created).format("MMM Do YY");  
+});
 
 
 
@@ -33,6 +49,8 @@ Vue.component('paginator', require('./components/Paginator.vue').default);
 Vue.component('notifications', require('./components/Notifications.vue').default);
 Vue.component('avatar-form', require('./components/AvatarForm.vue').default);
 Vue.component('wysiwyg', require('./components/Wysiwyg.vue').default);
+Vue.component('channel', require('./components/Channel.vue').default);
+Vue.component('pagination', require('laravel-vue-pagination'));
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

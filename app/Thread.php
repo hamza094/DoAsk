@@ -50,12 +50,14 @@ class Thread extends Model
         parent::boot();
             static::deleting(function($thread){
             $thread->replies->each->delete();
+            $thread->channel->decrement('threads_count');    
         }); 
          static::created(function($thread){
             $thread->update(['slug'=>$thread->title]);
-        }); 
+             $thread->channel->increment('threads_count');
+        });
         
-     }
+    }
     public function subscribe($userId=null){
         $this->subscription()->create([
             'user_id'=>$userId ?: auth()->id()
