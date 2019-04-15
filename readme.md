@@ -7,19 +7,19 @@ To run this project, you must have PHP 7 installed as a prerequisite.
 
 Begin by cloning this repository to your machine, and installing all Composer dependencies.
 
-git clone https://github.com/hamza094/Social-Forum.git
-cd socialforum && composer install
-php artisan key:generate
-mv .env.example .env
-Step 2.
+- git clone https://github.com/hamza094/Social-Forum.git
+- cd socialforum && composer install
+- php artisan key:generate
+- mv .env.example .env
+## Step 2.
 Next, create a new database and reference its name and username/password within the project's .env file. In the example below, we've named the database, "socialforum"
 
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=socialforum
-DB_USERNAME=root
-DB_PASSWORD=
+- DB_CONNECTION=mysql
+- DB_HOST=127.0.0.1
+- DB_PORT=3306
+- DB_DATABASE=socialforum
+- DB_USERNAME=root
+- DB_PASSWORD=
 ## Step 3.
 reCAPTCHA is a Google tool to help prevent forum spam. You'll need to create a free account (don't worry, it's quick).
 
@@ -29,8 +29,8 @@ Choose reCAPTCHA V2, and specify your local (and eventually production) domain n
 
 Once submitted, you'll see two important keys that should be referenced in your .env file.
 
-RECAPTCHA_KEY=PASTE_KEY_HERE
-RECAPTCHA_SECRET=PASTE_SECRET_HERE
+- RECAPTCHA_KEY=PASTE_KEY_HERE
+- RECAPTCHA_SECRET=PASTE_SECRET_HERE
 ## Step 4.
 Until an administration portal is available, manually insert any number of "channels" (think of these as forum categories) into the "channels" table in your database.
 
