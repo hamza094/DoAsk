@@ -35,7 +35,7 @@
                    <wysiwyg name="body"></wysiwyg>
                   <!-- <textarea name="body" id="body" rows="8" class="form-control" required>{{old('body')}}</textarea>-->
                </div>
-               <div class="g-recaptcha" data-sitekey="6LfBCJsUAAAAAAER-kmyZlsXrAdK6RKgU6VGmLJG"></div>
+               <div class="g-recaptcha" data-sitekey="{{config('forum.recaptcha.key')}}"></div>
                <br>
                <div class="form-group">
                <button class="btn btn-primary" type="submit">Submit</button>
