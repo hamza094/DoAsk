@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Reply;
 use App\Favourite;
+use App\Reputation;
 
 class FavoritesController extends Controller
 {
@@ -18,6 +19,7 @@ class FavoritesController extends Controller
     public function store(Reply $reply){
         
         $reply->favorite();
+        $reply->owner->increment('reputation',Reputation::Reply_Has_Favorited);
         
         return back();
       
@@ -26,9 +28,7 @@ class FavoritesController extends Controller
      public function destroy(Reply $reply){
         
         $reply->unfavorite();
-        
-        
-      
+        $reply->owner->decrement('reputation',Reputation::Reply_Has_Favorited);
     }
     
 }

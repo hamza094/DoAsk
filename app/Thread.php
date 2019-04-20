@@ -7,6 +7,7 @@ use App\Notifications\ThreadWasUpdated;
 use App\Events\ThreadReceivedNewReply;
 use Laravel\Scout\Searchable;
 
+
 class Thread extends Model
 {
     use RecordActivity, Searchable;
@@ -50,11 +51,13 @@ class Thread extends Model
         parent::boot();
             static::deleting(function($thread){
             $thread->replies->each->delete();
-            $thread->channel->decrement('threads_count');    
+            $thread->channel->decrement('threads_count');
+             Reputation::reduce($thread->creator,Reputation::Thread_Has_Published);    
         }); 
          static::created(function($thread){
             $thread->update(['slug'=>$thread->title]);
              $thread->channel->increment('threads_count');
+             Reputation::award($thread->creator,Reputation::Thread_Has_Published);
         });
         
     }
@@ -97,6 +100,7 @@ class Thread extends Model
     }
     public function markBestReply(Reply $reply){
         $this->update(['best_reply_id'=>$reply->id]); 
+        Reputation::award($reply->owner,Reputation::Reply_Marked_As_Best);
     }
     
     /**

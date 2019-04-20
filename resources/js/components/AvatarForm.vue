@@ -2,7 +2,10 @@
     <div>
     <img :src="avatar" width="75" height="75" class="mt-3 rounded">
 
-<h1 class="display-4" v-text="user.name"></h1>
+<h1> 
+    {{user.name}}
+    <small class="text-muted" v-text="reputation"></small>
+</h1>
 <form v-if="canUpdate"  method="POST" enctype="multipart/form-data">
     <input type="file" name="avatar" accept="image/*" @change="onChange">
     </form>
@@ -21,6 +24,9 @@
         computed:{
             canUpdate(){
             return this.authorize(user=>user.id===this.user.id)
+            },
+            reputation(){
+                return this.user.reputation + "XP"
             }
         },
         methods:{

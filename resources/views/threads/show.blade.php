@@ -28,7 +28,7 @@
         <div class="col-md-4">
                   <div class="card">
                 <div class="card-body">
-                    This Thread was publised {{$thread->created_at->diffforhumans()}} by <a href="{{route('profile',$thread->creator)}}">{{$thread->creator->name}}</a>, and currently has <span v-text="repliesCount"></span> {{str_plural('comment',$thread->replies_count)}}.
+                    This Thread was publised {{$thread->created_at->diffforhumans()}} by <a href="{{route('profile',$thread->creator)}}">{{$thread->creator->name}} ({{$thread->creator->reputation}}xp)</a>, and currently has <span v-text="repliesCount"></span> {{str_plural('comment',$thread->replies_count)}}.
                     <br>
                     @if(auth()->check())
                     @if(auth()->user()->email_verified_at!==null)

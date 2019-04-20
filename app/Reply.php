@@ -35,8 +35,6 @@ class Reply extends Model
        public function unfavorite(){
         $attributes=['user_id'=>auth()->id()];
        $this->favorites()->where($attributes)->get()->each->delete();
-                
-
     }
     
     public function isFavorited(){
@@ -87,10 +85,12 @@ class Reply extends Model
            
             static::created(function($reply){
             $reply->thread->increment('replies_count');
+            Reputation::award($reply->owner,Reputation::Reply_Has_Made);  
         });
            
         static::deleting(function($reply){
         $reply->thread->decrement('replies_count');
+        Reputation::reduce($reply->owner,Reputation::Reply_Has_Made);     
         });   
            
        static::deleting(function($model){
