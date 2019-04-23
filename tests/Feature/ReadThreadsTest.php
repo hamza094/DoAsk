@@ -47,10 +47,9 @@ class ReadThreadsTest extends TestCase
        /** @test */
     public function a_user_can_filter_threads_according_to_unanswered()
     {
-        $thread = create('App\Thread');
-        create('App\Reply', ['thread_id' => $thread->id]);
-        $response = $this->getJson('threads?unanswered=1')->json();
-        $this->assertCount(1, $response['data']);
+        $Unanswerdthread = create('App\Thread');
+        $this->get('threads?unanswered=1')
+        ->assertSee($Unanswerdthread->title);
         
       
     }
@@ -74,17 +73,19 @@ class ReadThreadsTest extends TestCase
     /** @test */
     public function a_user_can_filter_threads_according_to_a_popularity()
     {
-            
         $threadWithTwoReplies = create('App\Thread');
         create('App\Reply', ['thread_id' => $threadWithTwoReplies->id], 2);
         $threadWithThreeReplies = create('App\Thread');
         create('App\Reply', ['thread_id' => $threadWithThreeReplies->id], 3);
         $threadWithNoReplies = $this->thread;
-        $response = $this->getJson('threads?popular=1')->json();
-        $this->assertEquals([3, 2, 0], array_column($response['data'], 'replies_count'));
+        $response = $this->get('threads?popular=1');
+        $response->assertSeeInOrder([
+        $threadWithThreeReplies->title,
+        $threadWithTwoReplies->title,
+        $threadWithNoReplies->title
+        ]);
     }
-    
-    
+        
     /** @test */
     public function a_user_can_request_all_replies_for_a_given_thread(){
         $thread = create('App\Thread');
