@@ -9,6 +9,9 @@ before_script:
   - composer install --no-interaction
   - php artisan key:generate
 
+script:
+- vendor/bin/phpunit
+
 services:
  - reids-server
 
