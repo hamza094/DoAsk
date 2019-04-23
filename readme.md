@@ -1,4 +1,4 @@
-# Social-Forum
+# Social-Forum [![Build Status](https://travis-ci.org/hamza094/Social-Forum.svg?branch=master)](https://travis-ci.org/hamza094/Social-Forum)
 This is an open source forum that is built in Laravel and vue quite similar to laracast forum.
 
 # Installation
