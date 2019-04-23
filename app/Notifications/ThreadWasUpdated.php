@@ -10,18 +10,18 @@ class ThreadWasUpdated extends Notification
     use Queueable;
 
     protected $thread;
-    
+
     protected $reply;
-    
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($thread,$reply)
+    public function __construct($thread, $reply)
     {
-        $this->thread=$thread;
-        $this->reply=$reply;
+        $this->thread = $thread;
+        $this->reply = $reply;
     }
 
     /**
@@ -35,8 +35,6 @@ class ThreadWasUpdated extends Notification
         return ['database'];
     }
 
-  
-
     /**
      * Get the array representation of the notification.
      *
@@ -46,7 +44,7 @@ class ThreadWasUpdated extends Notification
     public function toArray($notifiable)
     {
         return [
-            'message'=>$this->reply->owner->name . ' replied to '.$this->thread->title,
+            'message'=>$this->reply->owner->name.' replied to '.$this->thread->title,
             'link'=>$this->reply->path()
         ];
     }

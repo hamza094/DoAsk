@@ -17,8 +17,8 @@ class CreateActivitiesTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id')->index();
             $table->unsignedInteger('subject_id')->index();
-            $table->string('subject_type',50);
-            $table->string('type',50);
+            $table->string('subject_type', 50);
+            $table->string('type', 50);
             $table->timestamps();
         });
     }

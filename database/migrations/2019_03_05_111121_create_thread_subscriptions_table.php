@@ -16,11 +16,11 @@ class CreateThreadSubscriptionsTable extends Migration
         Schema::create('thread_subscriptions', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-           $table->unsignedInteger('thread_id');
+            $table->unsignedInteger('thread_id');
             $table->timestamps();
-            
-            $table->unique(['user_id','thread_id']);
-            
+
+            $table->unique(['user_id', 'thread_id']);
+
             $table->foreign('thread_id')
                 ->references('id')
                 ->on('threads')

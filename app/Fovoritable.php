@@ -1,7 +1,10 @@
 <?php
+
 namespace App;
+
 use Illuminate\Database\Eloquent\Model;
-trait Favoritable
+
+trait Fovoritable
 {
     /**
      * A reply can be favorited.
@@ -12,6 +15,7 @@ trait Favoritable
     {
         return $this->morphMany(Favorite::class, 'favorited');
     }
+
     /**
      * Favorite the current reply.
      *
@@ -20,23 +24,25 @@ trait Favoritable
     public function favorite()
     {
         $attributes = ['user_id' => auth()->id()];
-        if (!$this->favorites()->where($attributes)->exists()) {
+        if (! $this->favorites()->where($attributes)->exists()) {
             return $this->favorites()->create($attributes);
         }
     }
+
     /**
      * Determine if the current reply has been favorited.
      *
-     * @return boolean
+     * @return bool
      */
     public function isFavorited()
     {
-        return !! $this->favorites->where('user_id', auth()->id())->count();
+        return (bool) $this->favorites->where('user_id', auth()->id())->count();
     }
+
     /**
      * Get the number of favorites for the reply.
      *
-     * @return integer
+     * @return int
      */
     public function getFavoritesCountAttribute()
     {

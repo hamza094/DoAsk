@@ -2,8 +2,8 @@
 
 namespace App\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
 use App\Inspections\Spam;
+use Illuminate\Contracts\Validation\Rule;
 
 class SpamFree implements Rule
 {
@@ -14,7 +14,6 @@ class SpamFree implements Rule
      */
     public function __construct()
     {
-        
     }
 
     /**
@@ -26,13 +25,11 @@ class SpamFree implements Rule
      */
     public function passes($attribute, $value)
     {
-        try{
+        try {
             return ! resolve(Spam::class)->detect($value);
-
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             return false;
         }
-
     }
 
     /**
