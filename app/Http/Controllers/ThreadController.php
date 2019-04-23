@@ -3,49 +3,48 @@
 namespace App\Http\Controllers;
 
 use App\Thread;
-use Illuminate\Http\Request;
-use Carbon\Carbon;
 use App\Channel;
-use App\User;
 use App\Trending;
+use Carbon\Carbon;
 use App\Rules\Recaptcha;
-
+use Illuminate\Http\Request;
 
 class ThreadController extends Controller
 {
-    public function __construct(){
-        $this->middleware('auth')->except(['index','show']);
-        $this->middleware('verified')->except(['index','show']);
-
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+        $this->middleware('verified')->except(['index', 'show']);
     }
+
     /**
      * Display a listing of the resource.
      *
      *param Channel $channel
      * @return \Illuminate\Http\Response
      */
-    public function index(Channel $channel,Trending $trending)
+    public function index(Channel $channel, Trending $trending)
     {
-        if($channel->exists){
-            $threads=$channel->threads()->latest();
-        }else{
-           $threads=Thread::latest();     
+        if ($channel->exists) {
+            $threads = $channel->threads()->latest();
+        } else {
+            $threads = Thread::latest();
         }
-        
-        if($username=request('by')){
-            $user=\App\User::where('name',$username)->firstOrFail();
-            $threads->where('user_id',$user->id);
-        }elseif(request('popular')){
-            $threads->getQuery()->orders=[];
-             $threads->orderBy('replies_count','desc');
-        }elseif(request('unanswered')){
-           $threads->getQuery()->orders=[];
-             $threads->where('replies_count',0);
+
+        if ($username = request('by')) {
+            $user = \App\User::where('name', $username)->firstOrFail();
+            $threads->where('user_id', $user->id);
+        } elseif (request('popular')) {
+            $threads->getQuery()->orders = [];
+            $threads->orderBy('replies_count', 'desc');
+        } elseif (request('unanswered')) {
+            $threads->getQuery()->orders = [];
+            $threads->where('replies_count', 0);
         }
-       
-        $threads=$threads->paginate(25);
-        
-        return view('threads.index',[
+
+        $threads = $threads->paginate(25);
+
+        return view('threads.index', [
             'threads'=>$threads,
             'trending'=>$trending->get()
         ]);
@@ -58,8 +57,9 @@ class ThreadController extends Controller
      */
     public function create()
     {
-        $channels=Channel::all();
-     return view('threads.create',compact('channels'));   
+        $channels = Channel::all();
+
+        return view('threads.create', compact('channels'));
     }
 
     /**
@@ -68,28 +68,28 @@ class ThreadController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,Recaptcha $recaptcha)
+    public function store(Request $request, Recaptcha $recaptcha)
     {
-                
-        $this->validate($request,[
+        $this->validate($request, [
             'title'=>'required|spamfree',
             'body'=>'required|spamfree',
             'channel_id'=>'required|exists:channels,id',
-            'g-recaptcha-response'=>['required',$recaptcha]
+            'g-recaptcha-response'=>['required', $recaptcha]
         ]);
-        
-        $thread=Thread::create([
+
+        $thread = Thread::create([
             'user_id'=>auth()->id(),
             'title'=>request('title'),
             'body'=>request('body'),
             'channel_id'=>request('channel_id')
-            
+
         ]);
-        if(request()->wantsJson()){
-            return response($thread,201); 
+        if (request()->wantsJson()) {
+            return response($thread, 201);
         }
+
         return redirect($thread->path())
-            ->with('flash','Your thread has been published');
+            ->with('flash', 'Your thread has been published');
     }
 
     /**
@@ -99,16 +99,16 @@ class ThreadController extends Controller
      * @param  \App\Thread  $thread
      * @return \Illuminate\Http\Response
      */
-    public function show($channelId,Thread $thread,Trending $trending)
+    public function show($channelId, Thread $thread, Trending $trending)
     {
-        $key=sprintf("users.%s.visits.%s",auth()->id(),$thread->id);
-        cache()->forever($key,Carbon::now());
-        
+        $key = sprintf('users.%s.visits.%s', auth()->id(), $thread->id);
+        cache()->forever($key, Carbon::now());
+
         $trending->push($thread);
-        
+
         $thread->increment('visits');
-        
-         return view('threads.show',compact('thread'));
+
+        return view('threads.show', compact('thread'));
     }
 
     /**
@@ -129,15 +129,15 @@ class ThreadController extends Controller
      * @param  \App\Thread  $thread
      * @return \Illuminate\Http\Response
      */
-    public function update($channel,Request $request, Thread $thread)
+    public function update($channel, Request $request, Thread $thread)
     {
-        $this->authorize('update',$thread);
-        $this->validate($request,[
+        $this->authorize('update', $thread);
+        $this->validate($request, [
             'title'=>'required|spamfree',
             'body'=>'required|spamfree',
            ]);
-        
-         $thread->update(request(['body','title']));
+
+        $thread->update(request(['body', 'title']));
     }
 
     /**
@@ -146,14 +146,14 @@ class ThreadController extends Controller
      * @param  \App\Thread  $thread
      * @return \Illuminate\Http\Response
      */
-    public function destroy($channel,Thread $thread)
+    public function destroy($channel, Thread $thread)
     {
-        $this->authorize('update',$thread);
+        $this->authorize('update', $thread);
         $thread->delete();
-        if(request()->wantsJson()){
-            return response([],204);
+        if (request()->wantsJson()) {
+            return response([], 204);
         }
-         return redirect('/threads');  
-      
+
+        return redirect('/threads');
     }
 }

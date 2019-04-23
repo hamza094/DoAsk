@@ -4,7 +4,7 @@ namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
-use Illuminate\Contracts\Queue\ShouldQueue;
+
 //use Illuminate\Notifications\Messages\MailMessage;
 
 class YouWereMentioned extends Notification
@@ -12,7 +12,7 @@ class YouWereMentioned extends Notification
     use Queueable;
 
     protected $reply;
-    
+
     /**
      * Create a new notification instance.
      *
@@ -20,10 +20,9 @@ class YouWereMentioned extends Notification
      */
     public function __construct($reply)
     {
-        $this->reply=$reply;
+        $this->reply = $reply;
     }
-    
-    
+
     /**
      * Get the notification's delivery channels.
      *
@@ -41,13 +40,13 @@ class YouWereMentioned extends Notification
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-   /* public function toMail($notifiable)
-    {
-        return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
-    }*/
+    /* public function toMail($notifiable)
+     {
+         return (new MailMessage)
+                     ->line('The introduction to the notification.')
+                     ->action('Notification Action', url('/'))
+                     ->line('Thank you for using our application!');
+     }*/
 
     /**
      * Get the array representation of the notification.
@@ -58,7 +57,7 @@ class YouWereMentioned extends Notification
     public function toArray($notifiable)
     {
         return [
-             'message'=>$this->reply->owner->name . ' mentioned you in '.$this->reply->thread->title,
+             'message'=>$this->reply->owner->name.' mentioned you in '.$this->reply->thread->title,
             'link'=>$this->reply->path()
         ];
     }

@@ -2,46 +2,42 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-
+use Illuminate\Database\Eloquent\Model;
 
 class Channel extends Model
 {
+    protected $guarded = [];
 
-    protected $guarded=[];
-    
-    public function getRouteKeyName(){
+    public function getRouteKeyName()
+    {
         return 'slug';
     }
-    
-    public function threads(){
+
+    public function threads()
+    {
         return $this->hasMany(Thread::class);
     }
-    
-    public static function boot(){
+
+    public static function boot()
+    {
         parent::boot();
-       static::creating(function ($channel) {
-        $channel->slug = Str::slug($channel->name);
-    }); 
-        
-         static::deleting(function($channel){
+        static::creating(function ($channel) {
+            $channel->slug = Str::slug($channel->name);
+        });
+
+        static::deleting(function ($channel) {
             $channel->threads->each->delete();
         });
-        
-     }
-    
+    }
+
     public function setSlugAttribute($value)
     {
-      $slug=str_slug($value);
-      if(static::whereSlug($slug)->exists()){
-           $slug="{$slug}-".$this->id;
-       }
-        
+        $slug = str_slug($value);
+        if (static::whereSlug($slug)->exists()) {
+            $slug = "{$slug}-".$this->id;
+        }
+
         $this->attributes['slug'] = $slug;
     }
-    
 }
-
-
-   

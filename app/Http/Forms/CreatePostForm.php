@@ -2,9 +2,9 @@
 
 namespace App\Http\Forms;
 
+use Illuminate\Support\Facades\Gate;
 use App\Exceptions\ThrottleException;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Gate;
 
 class CreatePostForm extends FormRequest
 {
@@ -18,13 +18,13 @@ class CreatePostForm extends FormRequest
         return Gate::allows('create', new \App\Reply);
     }
 
-     protected function failedAuthorization()
+    protected function failedAuthorization()
     {
         throw new ThrottleException(
             'You are replying too frequently. Please take a break.'
         );
     }
-    
+
     /**
      * Get the validation rules that apply to the request.
      *

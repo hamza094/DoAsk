@@ -6,7 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable implements MustVerifyEmail 
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 
@@ -16,10 +16,11 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','avatar_path'
+        'name', 'email', 'password', 'avatar_path'
     ];
-    
-     public function getRouteKeyName(){
+
+    public function getRouteKeyName()
+    {
         return 'name';
     }
 
@@ -29,23 +30,31 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token','email'
+        'password', 'remember_token', 'email'
     ];
-    
-    public function threads(){
+
+    public function threads()
+    {
         return $this->hasMany(Thread::class)->latest();
     }
-    
-    public function activities(){
+
+    public function activities()
+    {
         return $this->hasMany(Activity::class);
     }
-    public function lastReply(){
+
+    public function lastReply()
+    {
         return $this->hasOne(Reply::class)->latest();
     }
-    public function getAvatarPathAttribute($avatar){
+
+    public function getAvatarPathAttribute($avatar)
+    {
         return asset('/storage/'.($avatar ?: 'avatars/default.png'));
     }
-    public function isAdmin(){
+
+    public function isAdmin()
+    {
         return in_array($this->email, config('forum.adminstrators'));
     }
 }
