@@ -16,7 +16,7 @@ class SearchTest extends TestCase
      * @return void
      */
     
-    /** @test */
+    
     public function a_user_can_search_threads()
     {
        config(['scout.driver' => 'algolia']);
