@@ -8,13 +8,6 @@ before_script:
   - cp .env.travis .env
   - composer install --no-interaction
   - php artisan key:generate
-  - php artisan serve
-
-script:
-- vendor/bin/phpunit
-
-services:
- - reids-server
 
 cache:
   directories:
