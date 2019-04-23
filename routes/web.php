@@ -27,12 +27,6 @@ Route::patch('threads/{channel}/{thread}', 'ThreadController@update');
 Route::post('threads', 'ThreadController@store');
 Route::get('threads/{channel}', 'ThreadController@index');
 
-Route::get('/channels','ChannelController@index');
-Route::get('/allchannel','ChannelController@show');
-Route::delete('channels/{channel}', 'ChannelController@destroy');
-Route::post('/channels','ChannelController@store');
-Route::patch('/channels/{channel}','ChannelController@update');
-
 Route::post('locked-threads/{thread}','LockedThreadController@store')->name('locked-thread.store')->middleware('admin');
 Route::delete('locked-threads/{thread}','LockedThreadController@destroy')->name('locked-thread.destroy')->middleware('admin');
 
@@ -58,6 +52,20 @@ Route::get('api/users', 'Api\UsersController@index');
 Route::post('api/users/{user}/avatar', 'Api\UserAvatarController@store')->middleware('auth')->name('avatar');
 
 Route::view('scan','scan');
+
+Route::group([
+    'prefix'=>'admin',
+    'middleware'=>'admin',
+    
+],function(){
+Route::get('dashboard','DashboardController@index')->name('admin.dashboard');
+Route::get('/channels','ChannelController@index')->name('admin.channels');
+Route::get('/allchannel','ChannelController@show');
+Route::delete('channels/{channel}', 'ChannelController@destroy');
+Route::post('/channels','ChannelController@store');
+Route::patch('/channels/{channel}','ChannelController@update');
+});
+
 
 
 

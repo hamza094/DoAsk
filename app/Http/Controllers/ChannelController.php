@@ -15,7 +15,7 @@ class ChannelController extends Controller
     }
     
     public function index(Channel $channel){
-     return view('channels.index'); 
+     return view('admin.channels.index'); 
     }
     public function show(){
         return Channel::latest()->paginate(5);

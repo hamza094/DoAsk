@@ -11,10 +11,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                        @if(auth()->check())
-                       <li class="nav-item">
-                                <a class="nav-link" href="/channels">All Channels</a>
-                                    </li>
-                        <li class="nav-item">
+                           <li class="nav-item">
                                 <a class="nav-link" href="threads/create">Create Thread</a>
                                     </li>
                                     @endif
@@ -69,6 +66,9 @@
                             @endif
                         @else
                            <notifications></notifications>
+                           @if(Auth::user()->isAdmin())
+                           <li class="nav-item "><a href="/admin/dashboard" class="nav-link">Dashboard</a></li>
+                           @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>

@@ -10595,7 +10595,7 @@ __webpack_require__.r(__webpack_exports__);
     loadChannel: function loadChannel() {
       var _this = this;
 
-      axios.get('/allchannel').then(function (_ref) {
+      axios.get('/admin/allchannel').then(function (_ref) {
         var data = _ref.data;
         return _this.channels = data;
       });
@@ -10627,7 +10627,7 @@ __webpack_require__.r(__webpack_exports__);
     updateChannel: function updateChannel(id) {
       var _this3 = this;
 
-      this.form.patch('/channels/' + this.form.id)["catch"](function (error) {
+      this.form.patch('/admin/channels/' + this.form.id)["catch"](function (error) {
         flash(error.response.data, 'danger');
       }).then(function (_ref3) {
         var data = _ref3.data;
@@ -10641,7 +10641,7 @@ __webpack_require__.r(__webpack_exports__);
     destroy: function destroy(id) {
       var _this4 = this;
 
-      this.form["delete"]('/channels/' + id).then(function (_ref4) {
+      this.form["delete"]('/admin/channels/' + id).then(function (_ref4) {
         var data = _ref4.data;
 
         _this4.$emit('AfterCreate');
@@ -10655,7 +10655,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this5 = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      axios.get('/allchannel?page=' + page).then(function (response) {
+      axios.get('/admin/allchannel?page=' + page).then(function (response) {
         _this5.channels = response.data;
       });
     }
@@ -85438,7 +85438,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-8" }, [
+      _c("div", { staticClass: "col-md-10" }, [
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-header" }, [
             _c("span", [_vm._v("All Channels")]),

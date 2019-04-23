@@ -26,7 +26,9 @@ class LockThreadsTest extends TestCase
     
      /** @test */
     public function administrator_lock_threads(){
-        $this->signIn(factory('App\User')->states('administrator')->create());
+         $admin=create('App\User');
+        config(['forum.adminstrators'=>[$admin->email]]);
+        $this->signIn($admin);
         $thread = create('App\Thread', ['user_id' => auth()->id()]);
         $this->post(route('locked-thread.store',$thread));
         $this->assertTrue(!! $thread->fresh()->locked);
@@ -34,7 +36,9 @@ class LockThreadsTest extends TestCase
     
       /** @test */
     public function administrator_unlock_threads(){
-        $this->signIn(factory('App\User')->states('administrator')->create());
+         $admin=create('App\User');
+        config(['forum.adminstrators'=>[$admin->email]]);
+        $this->signIn($admin);
         $thread = create('App\Thread', ['user_id' => auth()->id()]);
         $this->delete(route('locked-thread.destroy',$thread));
         $this->assertFalse(!! $thread->fresh()->locked);

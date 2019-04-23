@@ -2,7 +2,7 @@
    
        <div class="container">
       <div class="row">
-          <div class="col-md-8">
+          <div class="col-md-10">
               <div class="card">
                   <div class="card-header">
                       <span>All Channels</span>
@@ -88,7 +88,7 @@ export default{
     },
     methods:{
         loadChannel(){
-          axios.get('/allchannel').then(({data})=>(this.channels=data));  
+          axios.get('/admin/allchannel').then(({data})=>(this.channels=data));  
         },
         newModal(){
             this.editing=false;
@@ -111,7 +111,7 @@ export default{
             });
         },
         updateChannel(id){
-           this.form.patch('/channels/'+this.form.id)
+           this.form.patch('/admin/channels/'+this.form.id)
             .catch(error=>{
                 flash(error.response.data,'danger');
             }).then(({data})=>{
@@ -121,7 +121,7 @@ export default{
             });    
         },
         destroy(id){
-            this.form.delete('/channels/'+id)
+            this.form.delete('/admin/channels/'+id)
            .then(({data})=>{
                 this.$emit('AfterCreate');
                flash('Channel Deleted Successfully.'); 
@@ -131,7 +131,7 @@ export default{
             
         },
         getResults(page=1){
-            axios.get('/allchannel?page=' + page)
+            axios.get('/admin/allchannel?page=' + page)
 				.then(response => {
 					this.channels = response.data;
 				});
