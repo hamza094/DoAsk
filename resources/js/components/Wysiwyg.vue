@@ -7,6 +7,7 @@
 
 <script>
     import Trix from 'trix';
+       Vue.config.ignoredElements = ['trix-editor'];
 export default{
     props:['name','value','placeholder','shouldClear'],
     mounted(){

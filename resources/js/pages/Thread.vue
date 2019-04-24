@@ -15,6 +15,18 @@
         }    
         };
         },
+        mounted(){
+            this.highlight(this.$refs['thread-body']);
+        },
+        watch:{
+            editing(){
+                if(!this.editing){
+                    this.$nextTick(()=>{
+                       this.highlight(this.$refs['thread-body']);
+                    });
+                }
+            }
+        },
         methods:{
             toogleLock(){
                 axios[(this.locked ? 'delete' : 'post')]('/locked-threads/'+this.thread.slug);

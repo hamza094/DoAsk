@@ -20,7 +20,7 @@
                        <button class="btn btn-sm btn-link" @click="remainTheSame" type="button">Cancel</button>
                        </form>
                        </div>
-                   <div v-else v-html="body">
+                   <div ref="data-body" v-else v-html="body">
                        
                    </div>
                      </div>
@@ -62,6 +62,18 @@
           window.events.$on('best-reply-selected',id=>{
               this.isBest=(id===this.id);
           });  
+        },
+          mounted(){
+            this.highlight(this.$refs['data-body']);
+        },
+        watch:{
+            editing(){
+                if(!this.editing){
+                    this.$nextTick(()=>{
+                       this.highlight(this.$refs['data-body']);
+                    });
+                }
+            }
         },
         methods:{
             update(){

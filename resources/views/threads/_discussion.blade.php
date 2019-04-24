@@ -27,7 +27,7 @@
     </div>
  <div class="card-body">
         <article>
-            <div class="body"><span v-html="this.form.body"></span></div>
+            <div class="body"><span ref="thread-body" v-html="this.form.body"></span></div>
         </article>
     </div>
     <div class="card-footer" v-if="authorize('updateThread',thread)">

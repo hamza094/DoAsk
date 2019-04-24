@@ -29,7 +29,15 @@ Vue.filter('myDate',function(created){
    return moment(created).format("MMM Do YY");  
 });
 
+let Highlighter=require('highlight.js');
+import 'highlight.js/styles/github.css';
 
+Vue.prototype.highlight= function (block){
+    if(!block) return;
+    block.querySelectorAll('pre').forEach(function(node){
+        Highlighter.highlightBlock(node);
+    });
+}
 
 
 /**
