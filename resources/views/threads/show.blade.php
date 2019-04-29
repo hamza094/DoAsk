@@ -11,19 +11,18 @@
         <div class="col-md-8" v-cloak>
         @include('threads._discussion')
           <h3 class="text-center mt-4">Thread Replies</h3>
-          @if(auth()->check())
-          @if(auth()->user()->email_verified_at!==null)
-           <replies
+         
+          @if(Auth::check() && auth()->user()->email_verified_at==null)
+           @include('threads.singlereply')
+           <br>
+            <p class="text-center">Please <a href="/home">Verify</a> your account to participate in discussion</p>
+          @else
+             <replies
           @added="repliesCount++"
            @removed="repliesCount--">
-           </replies>
+           </replies> 
            @endif
-           @else
-           @include('threads.singlereply')
-            <p>Please <a href="/login">Login</a> to access all features</p>
-           @endif
-                
-            <br>
+               <br>
           </div>
         <div class="col-md-4">
                   <div class="card">

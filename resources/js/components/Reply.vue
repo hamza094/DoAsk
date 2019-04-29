@@ -12,7 +12,7 @@
                 <div class="card-body">
                    <div v-if="editing">
                      <form @submit="update">
-                      <div class="form-group">
+                      <div class="form-group"  v-if="authorize('verfiedUser',reply)">
                           <wysiwyg v-model="body"></wysiwyg>
                        <!--<textarea v-model="body" class="form-control" required></textarea>-->
                        </div>

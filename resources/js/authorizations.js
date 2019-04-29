@@ -8,6 +8,9 @@ module.exports={
     },
     isAdmin(){
         return ['JohnDoe', 'JaneDoe'].includes(user.name);
-    }
+    },
+     verfiedUser(user){
+        return user.email_verified_at.length == 0;
+    },
 };
 
