@@ -8,6 +8,7 @@
         return{
         repliesCount:this.thread.replies_count,
         locked:this.thread.locked,
+        pinned:this.thread.pinned,    
         editing:false,
         form:{
             title:this.thread.title,
@@ -31,6 +32,10 @@
             toogleLock(){
                 axios[(this.locked ? 'delete' : 'post')]('/locked-threads/'+this.thread.slug);
                 this.locked= ! this.locked;
+            },
+            tooglePinned(){
+                 axios[(this.pinned ? 'delete' : 'post')]('/pinned-threads/'+this.thread.slug);
+                this.pinned= ! this.pinned;
             },
             Update(){
                 axios.patch('/threads/'+this.thread.channel.slug+'/'+this.thread.slug,{

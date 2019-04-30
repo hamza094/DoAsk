@@ -12,7 +12,10 @@
                       {{$thread->title}}
                       @endif
                       </a></h4>
-                      <p>{!! $thread->body !!}</p>                      
+                      <p>{!! $thread->body !!}</p>
+                      @if($thread->pinned)
+                      <span class="badge badge-primary float-right">Pinned</span>
+                      @endif                      
                   </article>                                    
                 </div>
                 <div class="card-footer">

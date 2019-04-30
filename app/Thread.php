@@ -12,6 +12,11 @@ class Thread extends Model
     use RecordActivity, Searchable;
 
     protected $guarded = [];
+    
+    protected $casts=[
+      'locked'=> 'boolean',
+       'pinned'=>'boolean'
+    ];
 
     protected $with = ['channel'];
 

@@ -18,6 +18,8 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $fillable = [
         'name', 'email', 'password', 'avatar_path'
     ];
+    
+    protected $appends = ['isAdmin'];
 
     public function getRouteKeyName()
     {
@@ -56,5 +58,9 @@ class User extends Authenticatable implements MustVerifyEmail
     public function isAdmin()
     {
         return in_array($this->email, config('forum.adminstrators'));
+    }
+    
+    public function getisAdminAttribute(){
+        return $this->isAdmin();
     }
 }

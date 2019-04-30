@@ -7,7 +7,7 @@ module.exports={
         return thread.user_id === user.id;
     },
     isAdmin(){
-        return ['JohnDoe', 'JaneDoe'].includes(user.name);
+        return user.isAdmin;
     },
      verfiedUser(user){
         return user.email_verified_at.length == 0;

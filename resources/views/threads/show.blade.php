@@ -33,6 +33,7 @@
                     @if(auth()->user()->email_verified_at!==null)
                     <subscribe :active="{{json_encode($thread->isSubscribedTo)}}" v-if="!locked"></subscribe>
                     <button class="btn btn-primary" v-if="authorize('isAdmin')" @click="toogleLock" v-text="locked ? 'Unlock' : 'lock' ">Lock</button>
+                     <button class="btn btn-primary" v-if="authorize('isAdmin')" @click="tooglePinned" v-text="pinned ? 'UnPinned' : 'Pinned' ">Lock</button>
                     @endif
                     @endif
                   </div>

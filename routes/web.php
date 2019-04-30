@@ -30,6 +30,9 @@ Route::get('threads/{channel}', 'ThreadController@index');
 Route::post('locked-threads/{thread}', 'LockedThreadController@store')->name('locked-thread.store')->middleware('admin');
 Route::delete('locked-threads/{thread}', 'LockedThreadController@destroy')->name('locked-thread.destroy')->middleware('admin');
 
+Route::post('pinned-threads/{thread}', 'PinnedThreadController@store')->name('pinned-thread.store')->middleware('admin');
+Route::delete('pinned-threads/{thread}', 'PinnedThreadController@destroy')->name('pinned-thread.destroy')->middleware('admin');
+
 Route::get('/threads/{channel}/{thread}/replies', 'ReplyController@index');
 Route::post('/threads/{channel}/{thread}/replies', 'ReplyController@store');
 Route::get('/replies/{reply}/favorites', 'FavoritesController@store');

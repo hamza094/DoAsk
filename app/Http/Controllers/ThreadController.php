@@ -28,7 +28,7 @@ class ThreadController extends Controller
         if ($channel->exists) {
             $threads = $channel->threads()->latest();
         } else {
-            $threads = Thread::latest();
+            $threads = Thread::orderBy('pinned','Desc')->latest();
         }
 
         if ($username = request('by')) {
