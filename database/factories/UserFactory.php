@@ -28,7 +28,8 @@ $factory->define(App\Channel::class, function (Faker $faker) {
 
     return [
         'name' => $name,
-        'slug'=>$name
+        'slug'=>$name,
+        'archived'=>false
     ];
 });
 

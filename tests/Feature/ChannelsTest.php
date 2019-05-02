@@ -57,8 +57,19 @@ class ChannelsTest extends TestCase
     public function a_user_can_update_channel(){
     $channel=create('App\Channel');
         $Updatedchannel='You have changed';  
-        $this->patch("/admin/channels/{$channel->id}",['name'=>$Updatedchannel]);
+        $this->patch("/admin/channels/{$channel->id}",['name'=>$Updatedchannel,'archived'=>false]);
         $this->assertDatabaseHas('channels',['id'=>$channel->id,'name'=>$Updatedchannel]);
+    }
+    
+    /** @test */
+    public function a_admin_can_mark_existing_channel_as_archived(){
+         $channel=create('App\Channel');  
+        $this->assertFalse($channel->archived);
+        $this->patch("/admin/channels/{$channel->id}",[
+        'name'=>'altered',
+        'archived'=>true    
+        ]);
+        $this->assertTrue($channel->fresh()->archived);
     }
     
 }

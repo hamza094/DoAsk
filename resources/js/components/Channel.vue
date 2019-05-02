@@ -17,11 +17,13 @@
       <th>Threads</th>
       <th>Created_at</th>
       <th>Action</th>
+      <th>Status</th>
       
     </tr>
   </thead>
   <tbody>
      <tr v-for="channel in channels.data" :key="channel.id">
+      
        <td>{{channel.id}}</td>
        <td>{{channel.name | upText}}</td>
        <td>{{channel.threads_count}}</td>
@@ -30,6 +32,8 @@
         <button class="btn btn-sm btn-link" @click="editModal(channel)">Edit</button>
        <a href="#" class="btn btn-sm btn-danger" @click="destroy(channel.id)">Delete</a>
        </td>
+         <td v-if="!channel.archived" class="badge badge-success">Active</td>
+         <td v-if="channel.archived" class="badge badge-warning">Archived</td>
     </tr>
   </tbody>
     </table>
@@ -56,10 +60,23 @@
       <form  @submit.prevent="editing ? updateChannel() : createChannel()">
       <div class="modal-body">
         <div class="form-group">
+           <label for="name">Name:</label>
             <input type="text" v-model="form.name" name="name" class="form-control"
              :class="{ 'is-invalid': form.errors.has('name') }">
       <has-error :form="form" field="name"></has-error>
         </div>
+        
+          <div class="form-group">
+          <label for="archived">Status:</label>
+          <select v-model="form.archived" name="archived" id="archived"
+          class="form-control" :class="{ 'is-invalid': form.errors.has('archived') }">
+          <option value="" selected>Select Channel Status...</option>
+          <option value="0">Active</option>
+          <option value="1">Archived</option>
+              </select>
+      <has-error :form="form" field="type"></has-error>
+    </div>
+        
       </div>
       <div class="modal-footer">
         <button type="submit" class="btn btn-primary" v-show=!editing>Create</button>
@@ -82,7 +99,8 @@ export default{
             channels:{},
             form:new Form({
                 id:'',
-                name:''
+                name:'',
+                archived:''
             })
         }
     },

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Channel;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ChannelController extends Controller
 {
@@ -19,7 +20,7 @@ class ChannelController extends Controller
 
     public function show()
     {
-        return Channel::latest()->paginate(5);
+        return Channel::withoutGlobalScopes()->orderby('name','asc')->paginate(5);
     }
 
     public function store(Request $request)
@@ -43,9 +44,11 @@ class ChannelController extends Controller
     {
         $channel = Channel::findOrFail($channel);
         $this->validate($request, [
-            'name'=>'required|string',
+            'name'=>['required',Rule::unique('channels')->ignore($channel->id)],
+            'archived'=>'required|boolean'
+            
         ]);
 
-        $channel->update(request(['name']));
+        $channel->update(request(['name','archived']));
     }
 }

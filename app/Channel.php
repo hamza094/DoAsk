@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Channel extends Model
 {
     protected $guarded = [];
+    
+     protected $casts=[
+       'archived'=>'boolean'
+    ];
 
     public function getRouteKeyName()
     {
@@ -29,6 +33,11 @@ class Channel extends Model
         static::deleting(function ($channel) {
             $channel->threads->each->delete();
         });
+        
+         static::addGlobalScope('active', function ($builder) {
+            $builder->where('archived',false)
+                ->orderBy('name','asc');
+        });
     }
 
     public function setSlugAttribute($value)
@@ -39,5 +48,9 @@ class Channel extends Model
         }
 
         $this->attributes['slug'] = $slug;
+    }
+    
+    public function archive(){
+        $this->update(['archived'=>true]);
     }
 }

@@ -6,6 +6,6 @@ return[
       'secret'=>env('RECAPTCHA_SECRET')
   ],
     'adminstrators'=>[
-        'ofelia.jones@example.net'
+        'keenan.barrows@example.org'
     ]
 ];
