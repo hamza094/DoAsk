@@ -26,7 +26,9 @@ class Thread extends Model
     {
         return "/threads/{$this->channel->slug}/{$this->slug}";
     }
-
+    
+ 
+  
     public function replies()
     {
         return $this->hasMany(Reply::class);
@@ -54,7 +56,7 @@ class Thread extends Model
 
     public function channel()
     {
-        return $this->belongsTo(Channel::class);
+        return $this->belongsTo(Channel::class)->withoutGlobalScope('active');
     }
 
     public static function boot()

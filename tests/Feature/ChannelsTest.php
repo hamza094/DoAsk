@@ -72,4 +72,12 @@ class ChannelsTest extends TestCase
         $this->assertTrue($channel->fresh()->archived);
     }
     
+    /**@test */
+    public function the_path_of_channel_is_uneffected_by_its_archived_status(){
+        $thread=create('App\Thread');
+        $path=$thread->path();
+        $thread->channel->archive();
+        $this->assertEquals($path,$thread->fresh()->path());
+    }
+    
 }

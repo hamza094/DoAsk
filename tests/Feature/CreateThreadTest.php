@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Thread;
 use App\Rules\Recaptcha;
+use App\Channel;
 
 class CreateThreadTest extends TestCase
 {
@@ -99,6 +100,14 @@ class CreateThreadTest extends TestCase
         $this->publishThread(['channel_id'=>999])
         ->assertSessionHasErrors('channel_id');
     }
+    
+    /** @test */ 
+     public function a_new_thread_cannot_be_created_in_an_archived_channel(){
+        $channel=create('App\Channel',['archived'=>true]);
+        $this->publishThread(['channel_id'=>$channel->id])
+            ->assertSessionHasErrors('channel_id');
+        $this->assertCount(0,$channel->threads);
+     }
     
     
            /** @test */
