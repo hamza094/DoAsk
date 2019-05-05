@@ -7,5 +7,8 @@ return[
   ],
     'adminstrators'=>[
         'keenan.barrows@example.org'
+    ],
+    'pagination'=>[
+        'perPage'=>25
     ]
 ];

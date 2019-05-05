@@ -43,7 +43,7 @@ class ThreadController extends Controller
             $threads->where('replies_count', 0);
         }
 
-        $threads = $threads->paginate(25);
+        $threads = $threads->paginate(config('forum.pagination.perPage'));
 
         return view('threads.index', [
             'threads'=>$threads,

@@ -53,7 +53,7 @@ class PinnedThreadsTest extends TestCase
      $admin=create('App\User');
         config(['forum.adminstrators'=>[$admin->email]]);
         $this->signIn($admin);
-         $threads = create(Thread::class, [], 3);
+        $threads = create(Thread::class, [], 3);
         $ids = $threads->pluck('id');
         
         $response_data = $this->getJson('/threads')->decodeResponseJson()['data'];
