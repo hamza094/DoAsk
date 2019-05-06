@@ -20,6 +20,7 @@
                   <button type="submit" class="btn btn-primary">Search</button>
                   </form>
               </div>
+              <button class="btn btn-success btn-sm">Login</button>
           </div>
           <hr>
            @if(count($trending ))
