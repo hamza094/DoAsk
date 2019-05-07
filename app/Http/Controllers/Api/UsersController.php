@@ -10,9 +10,9 @@ class UsersController extends Controller
 {
     public function index()
     {
-        $search = request('name');
+        $search = request('username');
 
-        return User::where('name', 'LIKE', "$search%")
+        return User::where('username', 'LIKE', "$search%")
             ->take(5)
             ->get();
     }

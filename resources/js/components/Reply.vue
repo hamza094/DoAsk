@@ -2,8 +2,8 @@
     
             <div class="card" :id="'reply-'+id">
                <div class="card-header" :class="isBest ? ' bg-success': 'bg-default'">
-                          <a :href="'/profiles/'+data.owner.name"
-                     v-text="data.owner.name" :class="isBest ? 'text-white': 'text-default'">
+                          <a :href="'/profiles/'+data.owner.username"
+                     v-text="data.owner.username" :class="isBest ? 'text-white': 'text-default'">
                          </a> said <span v-text="ago"></span>
                <div v-if="signedIn">
                 <favorite :reply="data"></favorite>

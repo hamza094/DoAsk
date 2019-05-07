@@ -23,8 +23,8 @@ class ProfilesTest extends TestCase
     {
         $user=create('App\User');
         //verification required
-        $this->get("/profiles/{$user->name}")
-            ->assertDontSee($user->name);
+        $this->get("/profiles/{$user->username}")
+            ->assertDontSee($user->username);
     }
     
       /** @test */
@@ -34,7 +34,7 @@ class ProfilesTest extends TestCase
         
         $thread=create('App\Thread',['user_id'=>auth()->id()]);
         
-        $this->get("/profiles/".auth()->user()->name)
+        $this->get("/profiles/".auth()->user()->username)
          ->assertSee($thread->title)
             ->assertSee($thread->body);
     }
