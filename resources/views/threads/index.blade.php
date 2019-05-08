@@ -3,11 +3,16 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+       <div class="col-md-3 padding-0">
+          <div class="right-panel">
+           hy there
+           </div>
+       </div>
+        <div class="col-md-7 padding-0">
            @include('threads._list')
            {{$threads->render()}}
         </div>
-        <div class="col-md-4">
+        <div class="col-md-2 padding-0">
           <div class="card">
               <div class="card-header">
                   Search Threads
