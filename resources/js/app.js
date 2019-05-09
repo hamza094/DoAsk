@@ -12,6 +12,10 @@ require('./bootstrap');
 import InstantSearch from 'vue-instantsearch';
 Vue.use(InstantSearch);
 
+import VModal from 'vue-js-modal';
+
+Vue.use(VModal)
+
 import moment from 'moment';
 
 import { Form, HasError, AlertError } from 'vform';
