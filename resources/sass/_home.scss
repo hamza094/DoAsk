@@ -1,0 +1,34 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0 ;
+    box-sizing: border-box ;
+}
+
+$bp-largest:75em; //1200px
+$bp-large:62.5em; //1000px
+$bp-medium:50em;  //800px
+
+
+html {
+    box-sizing: border-box !important;
+    font-size: 62.5% !important; //1rem=10px 10/16px=62.5%;
+    
+      @media only screen and (max-width:$bp-large){
+        font-size: 50% !important;
+    }
+    
+ }
+body {
+    font-family: "Nunito", sans-serif !important;
+    font-weight: 400 !important;
+    font-size: 1.7rem !important;
+    line-height: 1.7 !important;
+    //color:$color-grey-dark-1;
+    box-sizing: border-box !important;
+    background-color:  #f5f8fa !important;
+   margin:0 !important;
+   
+  
+}

@@ -23,8 +23,7 @@
     </div>
 </template>
 <script>
-    import 'jquery.caret';
-    import 'at.js';
+   
     
 export default {
        data(){

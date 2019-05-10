@@ -55,9 +55,38 @@
        @endif
        @endif
         <main class="py-4">
+           
+           <div class="container">
+    <div class="row justify-content-center">
+       <div class="col-md-3 padding-0">
+          <div class="right-panel">
+           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis ex molestias, corporis et earum enim, voluptas id minima quaerat libero vero cum assumenda suscipit unde fugit, dolorem eveniet ducimus quibusdam quis fuga officia distinctio ad. Reprehenderit dolores necessitatibus voluptatum, ducimus amet iusto repellendus voluptatibus alias maxime neque recusandae aliquam, ab! Eum aspernatur nulla molestias quos magni dolorem, maxime, vel repellendus culpa nobis ipsum similique molestiae placeat repudiandae. Enim, quo nisi inventore accusamus earum ratione aspernatur modi labore sequi incidunt ex tenetur eos ab dolores illum voluptas a, harum culpa, beatae dolorum. Ipsum laborum voluptates voluptatibus perspiciatis veritatis voluptatum, vel explicabo eos doloremque eius in dignissimos aspernatur aliquid dicta labore animi eum iusto illum facilis sint placeat cumque. Officia quisquam, sequi nostrum incidunt quae, ipsam eos, dolore explicabo aliquam, delectus ipsum fuga. Earum voluptas mollitia enim, modi quos neque in asperiores deleniti id. Sequi ducimus, vitae mollitia accusantium temporibus animi explicabo.
+           </div>
+       </div>
+       
+        <div class="col-md-7 padding-0">
             @yield('content')
-            
-            <flash message="{{session('flash')}}"></flash>
+        </div>
+        <div class="col-md-2 padding-0">
+          <div class="card">
+              <div class="card-header">
+                  Search Threads
+              </div>
+              <div class="card-body">
+                 <form action="/threads/search" method="get">
+                  <div class="form-group">
+                      <input type="text" name="q" class="form-control" placeholder="Search for something...">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Search</button>
+                  </form>
+              </div>
+          </div>
+          <hr>
+        </div>
+    </div>
+</div>
+           
+        <flash message="{{session('flash')}}"></flash>
         </main>
     </div>
 </body>

@@ -5,12 +5,20 @@
 // Variables
 @import 'variables';
 
+@import 'base';
+
+@import 'home';
+
+@import 'header';
+
+@import 'components';
+
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
 .navbar-laravel {
   background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 .2rem .4rem rgba(0, 0, 0, 0.04);
 }
 .padding-0{
     padding-right:0;
@@ -19,5 +27,5 @@
 
 .right-panel{
     background-color: aquamarine;
-    border-right:1px solid gray; 
+    border-right:.1px solid gray; 
 }
