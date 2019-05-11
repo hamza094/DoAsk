@@ -10,7 +10,7 @@ class Reply extends Model
     use RecordActivity;
 
     protected $guarded = [];
-    protected $appends = ['favoritesCount', 'isFavorited', 'isBest'];
+    protected $appends = ['favoritesCount', 'isFavorited', 'isBest','xp'];
 
     protected $with = ['owner', 'favorites'];
 
@@ -95,6 +95,18 @@ class Reply extends Model
             '<a href="/profiles/$1">$0</a>',
             $body
         );
+    }
+    
+      /**
+     * Calculate the correct XP amount earned for the current reply.
+     */
+    public function getXpAttribute()
+    {
+        $xp = config('forum.reputation.reply_posted');
+        if ($this->isBest()) {
+            $xp += config('forum.reputation.best_reply_awarded');
+        }
+        return $xp += $this->favorites()->count() * config('council.reputation.reply_favorited');
     }
 
     public static function boot()
