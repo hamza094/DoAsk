@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ mix('js/app.js') }}" defer></script>
     
     <script>
     window.App={!! json_encode([
@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.1.0/trix.css"> 
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <style>
         .level{
             display: flex;
@@ -55,9 +55,61 @@
        @endif
        @endif
         <main class="py-4">
+           
+           <div class="container">
+    <div class="row justify-content-center">
+       <div class="col-md-3 padding-0">
+          <div class="right-panel">
+          <button class="btn btn-default">Log In To Post</button>
+          <div class="threads">
+              <p class="threads-heading"><b>Browse</b></p>
+              <ul>
+                  <li><a href="/threads" >All Threads</a></li>
+                  @if(auth()->check())
+                  <li><a href="/threads?by={{auth()->user()->name}}">My Threads</a></li>
+                  @endif
+                  <li><a href="/threads?popular=1">Popular Threads</a></li>
+                  <li><a href="/threads?unanswered=1">Unanswered Threads</a></li>
+              </ul>
+          </div>
+           <div class="trending">
+              <p class="trending-heading"><b>Trending</b></p>
+              @if(count($trending ))
+              <ul>
+                  @foreach($trending as $thread)
+                    <li>
+                        <a href="{{url($thread->path)}}">{{$thread->title}}</a>
+                    </li>
+                    @endforeach
+                  </ul>
+                  @endif
+          </div>
+           </div>
+       </div>
+       
+        <div class="col-md-7 padding-0">
             @yield('content')
-            
-            <flash message="{{session('flash')}}"></flash>
+        </div>
+        <div class="col-md-2 padding-0">
+          <div class="card">
+              <div class="card-header">
+                  Search Threads
+              </div>
+              <div class="card-body">
+                 <form action="/threads/search" method="get">
+                  <div class="form-group">
+                      <input type="text" name="q" class="form-control" placeholder="Search for something...">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Search</button>
+                  </form>
+              </div>
+          </div>
+          <hr>
+        </div>
+    </div>
+</div>
+           
+        <flash message="{{session('flash')}}"></flash>
         </main>
     </div>
 </body>
