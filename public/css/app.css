@@ -30,8 +30,77 @@ body {
 }
 
 .right-panel {
-  background-color: #8eb4cb !important;
-  padding: 2.5rem;
+  background-color: #ECECEC;
+  padding: 2.7rem;
+  border-right: 1px solid lightgray;
+  transition: all 0.2s;
+  height: 100%;
+}
+
+.btn-default {
+  background-color: mediumseagreen !important;
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  letter-spacing: 0.2rem !important;
+  padding: 0.7rem 2.8rem 0.7rem 2.8rem !important;
+  margin: 0.5rem 0 0.3rem 0 !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) !important;
+}
+
+.btn-default:hover {
+  background-color: seagreen !important;
+}
+
+.threads {
+  margin-top: 2.6rem;
+}
+
+.threads-heading {
+  font-weight: 700;
+  color: darkgray;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+}
+
+.threads ul li {
+  list-style: none;
+}
+
+.threads ul li a {
+  text-decoration: none;
+  color: #696969;
+  font-weight: 700;
+}
+
+.threads ul li a:hover {
+  color: cornflowerblue;
+}
+
+.text-blue {
+  color: cornflowerblue;
+  font-weight: 700;
+}
+
+.trending {
+  margin-top: 2.6rem;
+}
+
+.trending-heading {
+  font-weight: 700;
+  color: darkgray;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+}
+
+.trending ul li {
+  list-style: none;
+  margin-bottom: 0.8rem;
+  line-height: 1.3;
+}
+
+.trending ul li a {
+  text-decoration: none;
 }
 
 /*!
@@ -10697,10 +10766,5 @@ a.text-dark:focus {
 .padding-0 {
   padding-right: 0;
   padding-left: 0;
-}
-
-.right-panel {
-  background-color: aquamarine;
-  border-right: 0.1px solid gray;
 }
 

@@ -60,7 +60,30 @@
     <div class="row justify-content-center">
        <div class="col-md-3 padding-0">
           <div class="right-panel">
-           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis ex molestias, corporis et earum enim, voluptas id minima quaerat libero vero cum assumenda suscipit unde fugit, dolorem eveniet ducimus quibusdam quis fuga officia distinctio ad. Reprehenderit dolores necessitatibus voluptatum, ducimus amet iusto repellendus voluptatibus alias maxime neque recusandae aliquam, ab! Eum aspernatur nulla molestias quos magni dolorem, maxime, vel repellendus culpa nobis ipsum similique molestiae placeat repudiandae. Enim, quo nisi inventore accusamus earum ratione aspernatur modi labore sequi incidunt ex tenetur eos ab dolores illum voluptas a, harum culpa, beatae dolorum. Ipsum laborum voluptates voluptatibus perspiciatis veritatis voluptatum, vel explicabo eos doloremque eius in dignissimos aspernatur aliquid dicta labore animi eum iusto illum facilis sint placeat cumque. Officia quisquam, sequi nostrum incidunt quae, ipsam eos, dolore explicabo aliquam, delectus ipsum fuga. Earum voluptas mollitia enim, modi quos neque in asperiores deleniti id. Sequi ducimus, vitae mollitia accusantium temporibus animi explicabo.
+          <button class="btn btn-default">Log In To Post</button>
+          <div class="threads">
+              <p class="threads-heading"><b>Browse</b></p>
+              <ul>
+                  <li><a href="/threads" >All Threads</a></li>
+                  @if(auth()->check())
+                  <li><a href="/threads?by={{auth()->user()->name}}">My Threads</a></li>
+                  @endif
+                  <li><a href="/threads?popular=1">Popular Threads</a></li>
+                  <li><a href="/threads?unanswered=1">Unanswered Threads</a></li>
+              </ul>
+          </div>
+           <div class="trending">
+              <p class="trending-heading"><b>Trending</b></p>
+              @if(count($trending ))
+              <ul>
+                  @foreach($trending as $thread)
+                    <li>
+                        <a href="{{url($thread->path)}}">{{$thread->title}}</a>
+                    </li>
+                    @endforeach
+                  </ul>
+                  @endif
+          </div>
            </div>
        </div>
        
