@@ -60,7 +60,9 @@
     <div class="row justify-content-center">
        <div class="col-md-3 padding-0">
           <div class="right-panel">
-          <button class="btn btn-default">Log In To Post</button>
+          @if(!auth()->check())
+          <button class="btn btn-default"  @click="$modal.show('login')">Log In To Post</button>
+            @endif
           <div class="threads">
               <p class="threads-heading"><b>Browse</b></p>
               <ul>
@@ -108,7 +110,7 @@
         </div>
     </div>
 </div>
-           
+            @include('modals.all')
         <flash message="{{session('flash')}}"></flash>
         </main>
     </div>
