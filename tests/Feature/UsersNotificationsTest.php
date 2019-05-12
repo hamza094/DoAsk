@@ -18,9 +18,9 @@ class UsersNotificationsTest extends TestCase
     /** @test */
     public function mentioned_user_in_a_reply_are_notified()
     {
-        $john=create('App\User',['name'=>'JohnDoe']);
+        $john=create('App\User',['username'=>'JohnDoe']);
         $this->signIn($john);
-        $jane=create('App\User',['name'=>'JaneDoe']);
+        $jane=create('App\User',['username'=>'JaneDoe']);
         $thread=create('App\Thread');
         $reply=make('App\Reply',[
             'body'=>'@JaneDoe look at this.'
@@ -31,10 +31,10 @@ class UsersNotificationsTest extends TestCase
     
     /** @test */
      function it_can_fetch_all_mentioned_users_starting_with_the_given_characters(){
-         create('App\User',['name'=>'johndoe']);
-         create('App\User',['name'=>'johndoe2']);
-         create('App\User',['name'=>'jandoe']);
-         $results=$this->json('GET','/api/users',['name'=>'john']);
+         create('App\User',['username'=>'johndoe']);
+         create('App\User',['username'=>'johndoe2']);
+         create('App\User',['username'=>'jandoe']);
+         $results=$this->json('GET','/api/users',['username'=>'john']);
          $this->assertCount(2,$results->json());
    }
 }

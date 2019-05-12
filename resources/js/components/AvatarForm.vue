@@ -4,8 +4,10 @@
 
 <h1> 
     {{user.name}}
-    <small class="text-muted" v-text="reputation"></small>
+    (<small class="text-muted" v-text="user.username"></small>)
 </h1>
+<span>Points: <b>{{user.reputation}}XP</b></span>
+<br><br>
 <form v-if="canUpdate"  method="POST" enctype="multipart/form-data">
     <input type="file" name="avatar" accept="image/*" @change="onChange">
     </form>
@@ -43,7 +45,7 @@
             persist(file){
                 let data=new FormData();
                 data.append('avatar',file);
-                axios.post('/api/users/$(this.user.name)/avatar',data)
+                axios.post('/api/users/$(this.user.username)/avatar',data)
                 .then(()=>flash('Avatar Uploaded!'));
             }
         }

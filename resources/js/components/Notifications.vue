@@ -21,12 +21,12 @@
         }
         },
             created(){
-            axios.get("/profiles/"+window.App.user.name+"/notifications")
+            axios.get("/profiles/"+window.App.user.username+"/notifications")
             .then(response=>this.notifications=response.data);
         },
         methods:{
             markAsRead(notification){
-                axios.delete("/profiles/"+window.App.user.name+"/notifications/"+notification.id);
+                axios.delete("/profiles/"+window.App.user.username+"/notifications/"+notification.id);
             }
         }
     }
