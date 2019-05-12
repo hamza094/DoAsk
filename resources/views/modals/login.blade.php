@@ -10,7 +10,7 @@
         <input type="password" name="pasword" id="password" class="form-control" v-model="form.password" autocomplete="current-password" required>
         </div>
         <div class="mt-3">
-        <button class="btn btn-success btn-lg">Login</button>
+        <button class="btn btn-success btn-lg" :class="loading ? 'loader': '' ">Login</button>
         <a href="#" class="btn btn-lg btn-link text-gray" @click="register">or register</a>
         </div>
         <div v-if="feedback">

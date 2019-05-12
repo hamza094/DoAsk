@@ -15,7 +15,7 @@
                     <a class="nav-link" href="threads/create">Create Thread</a>
                 </li>
                 @endif
-                   <channel-dropdown :channels="{{$allchannels}}"></channel-dropdown>
+                   
              </ul>
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">

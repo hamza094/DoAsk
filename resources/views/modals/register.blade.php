@@ -34,7 +34,7 @@
         </div>
         
         <div class="mt-3">
-        <button class="btn btn-success btn-lg">Register</button>
+        <button class="btn btn-success btn-lg" :class="loading ? 'loader': '' ">Register</button>
         </div>
         <div v-if="feedback">
             <span class="text-danger" v-text="feedback"></span>

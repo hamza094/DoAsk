@@ -63,7 +63,7 @@ Vue.component('avatar-form', require('./components/AvatarForm.vue').default);
 Vue.component('wysiwyg', require('./components/Wysiwyg.vue').default);
 Vue.component('channel', require('./components/Channel.vue').default);
 Vue.component('pagination', require('laravel-vue-pagination'));
-Vue.component('channel-dropdown', require('./components/ChannelDropdown.vue').default);
+//Vue.component('channel-dropdown', require('./components/ChannelDropdown.vue').default);
 Vue.component('login', require('./components/Login.vue').default);
 Vue.component('register', require('./components/Register.vue').default);
 
