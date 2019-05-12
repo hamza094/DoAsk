@@ -8,26 +8,14 @@
                 </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav mr-auto">
-                @if(auth()->check())
-                <li class="nav-item">
-                    <a class="nav-link" href="threads/create">Create Thread</a>
-                </li>
-                @endif
-                   <channel-dropdown :channels="{{$allchannels}}"></channel-dropdown>
-             </ul>
+                 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
                 @guest
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                </li>
+               
                 @if (Route::has('register'))
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                </li>
+               
                 @endif @else
                 <notifications></notifications>
                 @if(Auth::user()->isAdmin())

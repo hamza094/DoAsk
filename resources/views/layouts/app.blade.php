@@ -24,6 +24,9 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.1.0/trix.css"> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
@@ -59,17 +62,17 @@
            <div class="container">
     <div class="row justify-content-center">
        <div class="col-md-3 padding-0">
-          <div class="right-panel">
+          <div class="left-sidebar">
           <button class="btn btn-default">Log In To Post</button>
           <div class="threads">
               <p class="threads-heading"><b>Browse</b></p>
               <ul>
-                  <li><a href="/threads" >All Threads</a></li>
+                  <li><i class="fab fa-adn"></i><a href="/threads" > All Threads</a></li>
                   @if(auth()->check())
-                  <li><a href="/threads?by={{auth()->user()->name}}">My Threads</a></li>
+                  <li><i class="fas fa-user-secret"></i><a href="/threads?by={{auth()->user()->name}}"> My Threads</a></li>
                   @endif
-                  <li><a href="/threads?popular=1">Popular Threads</a></li>
-                  <li><a href="/threads?unanswered=1">Unanswered Threads</a></li>
+                  <li><i class="fas fa-star"></i><a href="/threads?popular=1"> Popular Threads</a></li>
+                  <li><i class="fas fa-question-circle red"></i><a href="/threads?unanswered=1"> Unanswered Threads</a></li>
               </ul>
           </div>
            <div class="trending">
@@ -91,20 +94,26 @@
             @yield('content')
         </div>
         <div class="col-md-2 padding-0">
-          <div class="card">
-              <div class="card-header">
-                  Search Threads
-              </div>
-              <div class="card-body">
-                 <form action="/threads/search" method="get">
-                  <div class="form-group">
-                      <input type="text" name="q" class="form-control" placeholder="Search for something...">
-                  </div>
-                  <button type="submit" class="btn btn-primary">Search</button>
-                  </form>
-              </div>
-          </div>
-          <hr>
+       <div class="right-sidebar">
+                <div class="channels">
+              <p class="channels-heading"><b>Channels</b></p>
+              <ul>
+                  @foreach($allchannels as $channels)
+                    <li>
+        <span
+        style="background-color:blue;
+        width: 1rem;
+        height: 1rem;
+        margin-right: .7rem;
+        border-radius: 50%;
+        display: inline-block;">
+            
+        </span><a href="/threads/{{$channels->slug}}">{{$channels->name}}</a>
+                    </li>
+                    @endforeach
+                  </ul>
+                 </div>
+            </div>
         </div>
     </div>
 </div>
