@@ -44,10 +44,13 @@ class ThreadController extends Controller
         }
 
         $threads = $threads->paginate(config('forum.pagination.perPage'));
+        
+        $channels = Channel::all();
 
         return view('threads.index', [
             'threads'=>$threads,
-            'trending'=>$trending->get()
+            'trending'=>$trending->get(),
+            'channels'=>$channels
         ]);
     }
 
@@ -114,7 +117,10 @@ class ThreadController extends Controller
 
         $thread->increment('visits');
 
-        return view('threads.show', compact('thread'));
+        return view('threads.show',[
+            'thread'=>$thread,
+            'trending'=>$trending->get()
+        ]);
     }
 
     /**

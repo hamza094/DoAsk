@@ -16,6 +16,7 @@
       <th>Name</th>
       <th>Threads</th>
       <th>Created_at</th>
+      <th>Color</th>
       <th>Action</th>
       <th>Status</th>
       
@@ -27,6 +28,7 @@
        <td>{{channel.id}}</td>
        <td>{{channel.name | upText}}</td>
        <td>{{channel.threads_count}}</td>
+       <td>{{channel.color}}</td>
        <td>{{channel.created_at | myDate}}</td>
        <td>
         <button class="btn btn-sm btn-link" @click="editModal(channel)">Edit</button>
@@ -66,7 +68,14 @@
       <has-error :form="form" field="name"></has-error>
         </div>
         
-          <div class="form-group">
+         <div class="form-group">
+           <label for="color">Color:</label>
+            <input type="text" v-model="form.color" name="color" class="form-control"
+             :class="{ 'is-invalid': form.errors.has('color') }">
+      <has-error :form="form" field="color"></has-error>
+        </div>
+        
+        <div class="form-group">
           <label for="archived">Status:</label>
           <select v-model="form.archived" name="archived" id="archived"
           class="form-control" :class="{ 'is-invalid': form.errors.has('archived') }">
@@ -100,7 +109,8 @@ export default{
             form:new Form({
                 id:'',
                 name:'',
-                archived:''
+                archived:'',
+                color:''
             })
         }
     },

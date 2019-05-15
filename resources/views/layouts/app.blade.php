@@ -24,8 +24,9 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.1.0/trix.css"> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
-    <!-- Styles -->
+ <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <style>
         .level{
@@ -44,8 +45,7 @@
     @yield('header')
 </head>
 <body>
-   
-    <div id="app">
+   <div id="app">
    @include('layouts.nav')
     @if(auth()->check())
     @if(auth()->user()->email_verified_at==null)
@@ -55,7 +55,35 @@
        @endif
        @endif
         <main class="py-4">
-           
+        
+        <div class="container">
+    <div class="row justify-content-center">
+       <div class="col-md-3 padding-0">
+          <div class="left-sidebar">
+          <button class="btn btn-default">Log In To Post</button>
+          <div class="threads">
+              <p class="threads-heading"><b>Browse</b></p>
+              <ul>
+                  <li><i class="fab fa-adn"></i><a href="/threads" > All Threads</a></li>
+                  @if(auth()->check())
+                  <li><i class="fas fa-user-secret"></i><a href="/threads?by={{auth()->user()->name}}"> My Threads</a></li>
+                  @endif
+                  <li><i class="fas fa-star"></i><a href="/threads?popular=1"> Popular Threads</a></li>
+                  <li><i class="fas fa-question-circle red"></i><a href="/threads?unanswered=1"> Unanswered Threads</a></li>
+              </ul>
+          </div>
+           <div class="trending">
+              <p class="trending-heading"><b>Trending</b></p>
+              @if(count($trending ))
+              <ul>
+                  @foreach($trending as $thread)
+                    <li>
+                        <a href="{{url($thread->path)}}">{{$thread->title}}</a>
+                    </li>
+                    @endforeach
+                  </ul>
+                  @endif
+          </div>
            <div class="container">
     <div class="row justify-content-center">
        <div class="col-md-3 padding-0">
@@ -76,11 +104,40 @@
                   <li><a href="/threads?unanswered=1">Unanswered Threads</a></li>
               </ul>
           </div>
-         
            </div>
        </div>
        
         <div class="col-md-7 padding-0">
+
+           <div class="main-panel">
+            @yield('content')
+            </div>
+        </div>
+        <div class="col-md-2 padding-0">
+       <div class="right-sidebar">
+                <div class="channels">
+              <p class="channels-heading">Channels</p>
+              <ul>
+                  @foreach($allchannels as $channel)
+                    <li>
+        <span
+        style="background-color:{{$channel->color}};
+        width: 1.3rem;
+        height: 1.3rem;
+        margin-right: .9rem;
+        border-radius: 50%;
+        display: inline-block;">
+            
+        </span><a href="/threads/{{$channel->slug}}">{{$channel->name}}</a>
+                    </li>
+                    @endforeach
+                  </ul>
+                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
             @yield('content')
         </div>
         <div class="col-md-2 padding-0">

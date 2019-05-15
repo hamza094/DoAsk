@@ -6,7 +6,9 @@ return[
       'secret'=>env('RECAPTCHA_SECRET')
   ],
     'adminstrators'=>[
-        'misael.zulauf@example.net'
+
+        'kyle00@example.org'
+
     ],
      'reputation' => [
         'thread_published' => 10,

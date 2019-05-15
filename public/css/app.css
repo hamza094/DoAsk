@@ -29,13 +29,21 @@ body {
   margin: 0 !important;
 }
 
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1230px !important;
+  }
+}
+
+.left-sidebar {
+  background-color: #ECECEC;
+  padding: 2.7rem 3rem 2.7rem 3rem;
+
 .right-panel {
   background-color: #ECECEC;
   padding: 2.7rem;
-  border-right: 1px solid lightgray;
-  transition: all 0.2s;
-  height: 100%;
-}
+
 
 .btn-default {
   background-color: mediumseagreen !important;
@@ -43,7 +51,9 @@ body {
   font-weight: 700 !important;
   color: #ffffff !important;
   letter-spacing: 0.2rem !important;
-  padding: 0.7rem 2.8rem 0.7rem 2.8rem !important;
+
+  padding: 0.7rem 3.5rem 0.7rem 3.5rem !important;
+
   margin: 0.5rem 0 0.3rem 0 !important;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) !important;
 }
@@ -71,10 +81,13 @@ body {
   text-decoration: none;
   color: #696969;
   font-weight: 700;
+  transition: all 0.1s;
+
 }
 
 .threads ul li a:hover {
   color: cornflowerblue;
+  padding-left: 0.2rem;
 }
 
 .text-blue {
@@ -102,6 +115,78 @@ body {
 .trending ul li a {
   text-decoration: none;
 }
+
+
+.right-sidebar {
+  background-color: #ffffff;
+  padding: 3rem;
+  border-left: 1px solid lightgray;
+  height: 100%;
+}
+
+.channels-heading {
+  margin-top: 2.6rem;
+  color: #808080;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  letter-spacing: 0.2rem;
+  font-weight: 700;
+}
+
+.channels ul li {
+  list-style: none;
+  margin-bottom: 0.8rem;
+  line-height: 1.3;
+}
+
+.channels ul li a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #696969;
+}
+
+.fas {
+  color: mediumseagreen;
+  padding-right: 0.4rem;
+}
+
+.fab {
+  color: mediumseagreen;
+  padding-right: 0.4rem;
+}
+
+.main-panel {
+  background-color: #ffffff;
+  height: 100%;
+}
+
+.thread {
+  padding: 0rem 6rem 3rem 6rem;
+}
+
+.thread-heading a:link {
+  text-decoration: none;
+}
+
+.thread-creator a:link {
+  text-decoration: none;
+}
+
+.thread-info ul li {
+  list-style: none;
+}
+
+.thread-info ul li a {
+  text-decoration: none;
+}
+
+.thread-border {
+  border-bottom: 1px solid lightgray;
+  width: 70%;
+  margin: 0 auto;
+}
+
+  
 
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
@@ -10814,5 +10899,6 @@ a.text-dark:focus {
     -webkit-transform: rotate(359deg);
     transform: rotate(359deg);
   }
+
 }
 
