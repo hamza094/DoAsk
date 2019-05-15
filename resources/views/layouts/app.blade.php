@@ -62,6 +62,8 @@
           <div class="right-panel">
           @if(!auth()->check())
           <button class="btn btn-default"  @click="$modal.show('login')">Log In To Post</button>
+           @elseif(Route::is('threads'))
+           <button class="btn btn-default"  @click="$modal.show('create-thread')">Create New Thread</button>
             @endif
           <div class="threads">
               <p class="threads-heading"><b>Browse</b></p>
@@ -74,18 +76,7 @@
                   <li><a href="/threads?unanswered=1">Unanswered Threads</a></li>
               </ul>
           </div>
-           <div class="trending">
-              <p class="trending-heading"><b>Trending</b></p>
-              @if(count($trending ))
-              <ul>
-                  @foreach($trending as $thread)
-                    <li>
-                        <a href="{{url($thread->path)}}">{{$thread->title}}</a>
-                    </li>
-                    @endforeach
-                  </ul>
-                  @endif
-          </div>
+         
            </div>
        </div>
        

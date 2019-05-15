@@ -32,10 +32,10 @@
               </div>
                <div class="form-group">
                    <label for="body">Body:</label>
-                   <wysiwyg name="body"></wysiwyg>
+                   <thread-wysiwg name="body"></thread-wysiwg>
                   <!-- <textarea name="body" id="body" rows="8" class="form-control" required>{{old('body')}}</textarea>-->
                </div>
-               <div class="g-recaptcha" data-sitekey="{{config('forum.recaptcha.key')}}"></div>
+               <recaptcha ref="recaptcha" sitekey="{{ config('forum.recaptcha.key') }}"></recaptcha>
                <br>
                <div class="form-group">
                <button class="btn btn-primary" type="submit">Submit</button>
