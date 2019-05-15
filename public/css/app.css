@@ -29,6 +29,7 @@ body {
   margin: 0 !important;
 }
 
+
 @media (min-width: 1200px) {
   .container {
     max-width: 1230px !important;
@@ -38,10 +39,11 @@ body {
 .left-sidebar {
   background-color: #ECECEC;
   padding: 2.7rem 3rem 2.7rem 3rem;
-  border-right: 1px solid lightgray;
-  transition: all 0.2s;
-  height: 100%;
-}
+
+.right-panel {
+  background-color: #ECECEC;
+  padding: 2.7rem;
+
 
 .btn-default {
   background-color: mediumseagreen !important;
@@ -49,7 +51,9 @@ body {
   font-weight: 700 !important;
   color: #ffffff !important;
   letter-spacing: 0.2rem !important;
+
   padding: 0.7rem 3.5rem 0.7rem 3.5rem !important;
+
   margin: 0.5rem 0 0.3rem 0 !important;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) !important;
 }
@@ -78,6 +82,7 @@ body {
   color: #696969;
   font-weight: 700;
   transition: all 0.1s;
+
 }
 
 .threads ul li a:hover {
@@ -110,6 +115,7 @@ body {
 .trending ul li a {
   text-decoration: none;
 }
+
 
 .right-sidebar {
   background-color: #ffffff;
@@ -179,6 +185,8 @@ body {
   width: 70%;
   margin: 0 auto;
 }
+
+  
 
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
@@ -10843,5 +10851,54 @@ a.text-dark:focus {
 .padding-0 {
   padding-right: 0;
   padding-left: 0;
+}
+
+.loader {
+  color: transparent !important;
+  pointer-events: none;
+  position: relative;
+}
+
+.loader:after {
+  -webkit-animation: spinAround 500ms infinite linear;
+          animation: spinAround 500ms infinite linear;
+  border: 2px solid #dbdbdb;
+  border-radius: 290486px;
+  border-right-color: transparent;
+  border-top-color: transparent;
+  content: "";
+  display: block;
+  width: 1em;
+  height: 1em;
+  position: relative;
+  position: absolute;
+  left: calc(50% - (1em / 2));
+  top: calc(50% - (1em / 2));
+  position: absolute !important;
+}
+
+@-webkit-keyframes spinAround {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+@keyframes spinAround {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+
 }
 

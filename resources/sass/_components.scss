@@ -1,14 +1,17 @@
+
 .left-sidebar{
     background-color: #ECECEC;
     padding: 2.7rem 3rem 2.7rem 3rem;
-    border-right: 1px solid lightgray;
-    transition: all .2s;
-    height:100%;
+.right-panel{
+    background-color: #ECECEC;
+    padding: 2.7rem;
+
 }
 
 //btn
 
 .btn-default{
+
     background-color: $ligh-green !important;
     font-size: 1.5rem !important;
     font-weight: $font-bold !important;
@@ -24,15 +27,33 @@
 
 //threads sidebar list
 
+    background-color: mediumseagreen!important;
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    color:#ffffff !important;
+    letter-spacing: .2rem !important;
+    padding:.7rem 2.8rem .7rem 2.8rem !important;
+    margin: .5rem 0 .3rem 0 !important;   
+    box-shadow: 0 0 10px rgba(0,0,0,.3) !important;
+    &:hover{
+        background-color: seagreen !important;
+    }
+}
+
+//threads
+
+
 .threads{
     margin-top: 2.6rem;
     &-heading{
+
         font-weight: $font-bold;
+        font-weight: 700;
+
         color:darkgray;
         text-transform: uppercase;
         font-size: 1.4rem;
-       
-    }
+     }
     ul{
         
         li{
@@ -40,11 +61,16 @@
             a{
                 text-decoration: none;
                 color:#696969;
+
                 font-weight:$font-bold;
                 transition: all .1s;
                     &:hover{
                     color:cornflowerblue;
                     padding-left:.2rem;     
+                font-weight:700;
+                    &:hover{
+                    color:cornflowerblue;
+
                 }
             }
         }
@@ -54,6 +80,8 @@
 .text-blue{
     color:cornflowerblue;
     font-weight:$font-bold;
+    font-weight:700;
+
 } 
 
 //trending threads
@@ -61,7 +89,9 @@
 .trending{
     margin-top: 2.6rem;
     &-heading{
+
         font-weight: $font-bold;
+        font-weight: 700;
         color:darkgray;
         text-transform: uppercase;
         font-size: 1.4rem;
@@ -74,6 +104,7 @@
             a{
                 text-decoration: none;
             }
+
           }
     }
 }
@@ -161,6 +192,6 @@
         margin:0 auto;
     }
 }
-
-
-
+  }
+    }
+}

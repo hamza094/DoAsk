@@ -42,7 +42,7 @@ class RegistrationsTest extends TestCase
             'password'=>'secret',
             'password_confirmation'=>'secret'
         ]);
-        $response->assertRedirect('/home');
+        $response->assertRedirect('/threads');
         $this->assertTrue(Auth::check());
         $this->assertCount(1,User::all());
         tap(User::first(),function($user){

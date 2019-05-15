@@ -26,9 +26,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.1.0/trix.css"> 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
-
-
-    <!-- Styles -->
+ <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <style>
         .level{
@@ -47,8 +45,7 @@
     @yield('header')
 </head>
 <body>
-   
-    <div id="app">
+   <div id="app">
    @include('layouts.nav')
     @if(auth()->check())
     @if(auth()->user()->email_verified_at==null)
@@ -58,7 +55,8 @@
        @endif
        @endif
         <main class="py-4">
-           <div class="container">
+        
+        <div class="container">
     <div class="row justify-content-center">
        <div class="col-md-3 padding-0">
           <div class="left-sidebar">
@@ -86,10 +84,31 @@
                   </ul>
                   @endif
           </div>
+           <div class="container">
+    <div class="row justify-content-center">
+       <div class="col-md-3 padding-0">
+          <div class="right-panel">
+          @if(!auth()->check())
+          <button class="btn btn-default"  @click="$modal.show('login')">Log In To Post</button>
+           @elseif(Route::is('threads'))
+           <button class="btn btn-default"  @click="$modal.show('create-thread')">Create New Thread</button>
+            @endif
+          <div class="threads">
+              <p class="threads-heading"><b>Browse</b></p>
+              <ul>
+                  <li><a href="/threads" >All Threads</a></li>
+                  @if(auth()->check())
+                  <li><a href="/threads?by={{auth()->user()->name}}">My Threads</a></li>
+                  @endif
+                  <li><a href="/threads?popular=1">Popular Threads</a></li>
+                  <li><a href="/threads?unanswered=1">Unanswered Threads</a></li>
+              </ul>
+          </div>
            </div>
        </div>
        
         <div class="col-md-7 padding-0">
+
            <div class="main-panel">
             @yield('content')
             </div>
@@ -118,7 +137,28 @@
         </div>
     </div>
 </div>
-           
+
+            @yield('content')
+        </div>
+        <div class="col-md-2 padding-0">
+          <div class="card">
+              <div class="card-header">
+                  Search Threads
+              </div>
+              <div class="card-body">
+                 <form action="/threads/search" method="get">
+                  <div class="form-group">
+                      <input type="text" name="q" class="form-control" placeholder="Search for something...">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Search</button>
+                  </form>
+              </div>
+          </div>
+          <hr>
+        </div>
+    </div>
+</div>
+            @include('modals.all')
         <flash message="{{session('flash')}}"></flash>
         </main>
     </div>
