@@ -17,7 +17,7 @@ Route::get('/', function () {
 Auth::routes(['verify'=>true]);
 
 Route::get('/home', 'HomeController@index')->middleware('verified');
-Route::get('threads', 'ThreadController@index');
+Route::get('threads', 'ThreadController@index')->name('threads');
 Route::get('threads/create', 'ThreadController@create');
 
 Route::get('/threads/search', 'SearchController@show');

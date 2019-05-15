@@ -46,7 +46,7 @@ class ChannelsTest extends TestCase
     }
     
     /** @test */
-    public function a_user_can_delete_channel(){
+    public function a_admin_can_delete_channel(){
     $channel=create('App\Channel');
         $response=$this->json('DELETE',"/admin/channels/{$channel->id}");
         $response->assertStatus(200);
@@ -54,10 +54,11 @@ class ChannelsTest extends TestCase
     }
     
     /** @test */
-    public function a_user_can_update_channel(){
+    public function an_admin_can_update_channel(){
     $channel=create('App\Channel');
-        $Updatedchannel='You have changed';  
-        $this->patch("/admin/channels/{$channel->id}",['name'=>$Updatedchannel,'archived'=>false]);
+        $Updatedchannel='You have changed';
+        $Updatedcolor='blue';
+        $this->patch("/admin/channels/{$channel->id}",['name'=>$Updatedchannel,'archived'=>false,'color'=>$Updatedcolor]);
         $this->assertDatabaseHas('channels',['id'=>$channel->id,'name'=>$Updatedchannel]);
     }
     
@@ -67,6 +68,7 @@ class ChannelsTest extends TestCase
         $this->assertFalse($channel->archived);
         $this->patch("/admin/channels/{$channel->id}",[
         'name'=>'altered',
+        'color'=>'red',    
         'archived'=>true    
         ]);
         $this->assertTrue($channel->fresh()->archived);

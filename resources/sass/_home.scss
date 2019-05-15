@@ -29,6 +29,9 @@ body {
     box-sizing: border-box !important;
     background-color:  #f5f8fa !important;
    margin:0 !important;
-   
-  
+}
+@media (min-width: 1200px){
+.container {
+    max-width: 1230px !important;
+}
 }

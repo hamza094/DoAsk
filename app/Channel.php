@@ -53,4 +53,9 @@ class Channel extends Model
     public function archive(){
         $this->update(['archived'=>true]);
     }
+    
+   public function getNameAttribute($value)
+    {
+            return ucwords($value);
+    }
 }

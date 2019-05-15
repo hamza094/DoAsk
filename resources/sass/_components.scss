@@ -1,6 +1,6 @@
 .left-sidebar{
     background-color: #ECECEC;
-    padding: 2.7rem;
+    padding: 2.7rem 3rem 2.7rem 3rem;
     border-right: 1px solid lightgray;
     transition: all .2s;
     height:100%;
@@ -9,25 +9,25 @@
 //btn
 
 .btn-default{
-    background-color: mediumseagreen!important;
+    background-color: $ligh-green !important;
     font-size: 1.5rem !important;
-    font-weight: 700 !important;
-    color:#ffffff !important;
+    font-weight: $font-bold !important;
+    color:$primary-white !important;
     letter-spacing: .2rem !important;
-    padding:.7rem 2.8rem .7rem 2.8rem !important;
+    padding:.7rem 3.5rem .7rem 3.5rem !important;
     margin: .5rem 0 .3rem 0 !important;   
     box-shadow: 0 0 10px rgba(0,0,0,.3) !important;
     &:hover{
-        background-color: seagreen !important;
+        background-color: $dark-green !important;
     }
 }
 
-//threads
+//threads sidebar list
 
 .threads{
     margin-top: 2.6rem;
     &-heading{
-        font-weight: 700;
+        font-weight: $font-bold;
         color:darkgray;
         text-transform: uppercase;
         font-size: 1.4rem;
@@ -40,9 +40,11 @@
             a{
                 text-decoration: none;
                 color:#696969;
-                font-weight:700;
+                font-weight:$font-bold;
+                transition: all .1s;
                     &:hover{
                     color:cornflowerblue;
+                    padding-left:.2rem;     
                 }
             }
         }
@@ -51,7 +53,7 @@
 
 .text-blue{
     color:cornflowerblue;
-    font-weight:700;
+    font-weight:$font-bold;
 } 
 
 //trending threads
@@ -59,7 +61,7 @@
 .trending{
     margin-top: 2.6rem;
     &-heading{
-        font-weight: 700;
+        font-weight: $font-bold;
         color:darkgray;
         text-transform: uppercase;
         font-size: 1.4rem;
@@ -80,8 +82,8 @@
 
 
 .right-sidebar{
-    background-color: #ECECEC;
-    padding: 2.7rem;
+    background-color: $primary-white;
+    padding: 3rem;
     border-left: 1px solid lightgray;
     height:100%;
 }
@@ -91,10 +93,11 @@
 .channels{
     &-heading{
         margin-top: 2.6rem;
-         font-weight: 700;
         color:#808080;
         text-transform: uppercase;
         font-size: 1.4rem;
+        letter-spacing: .2rem;
+        font-weight: $font-bold;
     }
     ul{
         li{
@@ -111,10 +114,53 @@
 
 }
   .fas{
-    color: mediumseagreen;
+    color: $ligh-green;
       padding-right: .4rem;
     }
 .fab{
-    color: mediumseagreen;
+    color: $ligh-green;
       padding-right: .4rem;
 }
+//main panel
+
+.main-panel{
+    background-color: $primary-white;
+    height: 100%;
+}
+
+//each individual threads
+.thread{
+    padding: 0rem 6rem 3rem 6rem;
+    &-heading{
+        a:link{
+            text-decoration: none;
+        }
+    }
+    &-content{
+        
+    }
+    &-creator{
+        a:link{
+            text-decoration: none;
+        }
+    }
+    &-info{
+        ul{
+           
+            li{
+                list-style: none;
+                a{
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    &-border{
+        border-bottom: 1px solid lightgray;
+        width: 70%;
+        margin:0 auto;
+    }
+}
+
+
+

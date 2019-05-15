@@ -27,11 +27,15 @@ class ChannelController extends Controller
     {
         $this->validate($request, [
             'name'=>'required|string',
+            'color'=>'required|string',
         ]);
 
         $channel = Channel::create([
            'name'=>request('name'),
+            'color'=>request('color')
            ]);
+        
+        cache()->forget('channels');
     }
 
     public function destroy($channel)
@@ -45,10 +49,13 @@ class ChannelController extends Controller
         $channel = Channel::findOrFail($channel);
         $this->validate($request, [
             'name'=>['required',Rule::unique('channels')->ignore($channel->id)],
-            'archived'=>'required|boolean'
+            'archived'=>'required|boolean',
+            'color'=>'required|string',
             
         ]);
 
-        $channel->update(request(['name','archived']));
+        $channel->update(request(['name','archived','color']));
+        
+        cache()->forget('channels');
     }
 }

@@ -58,7 +58,6 @@
        @endif
        @endif
         <main class="py-4">
-           
            <div class="container">
     <div class="row justify-content-center">
        <div class="col-md-3 padding-0">
@@ -91,24 +90,26 @@
        </div>
        
         <div class="col-md-7 padding-0">
+           <div class="main-panel">
             @yield('content')
+            </div>
         </div>
         <div class="col-md-2 padding-0">
        <div class="right-sidebar">
                 <div class="channels">
-              <p class="channels-heading"><b>Channels</b></p>
+              <p class="channels-heading">Channels</p>
               <ul>
-                  @foreach($allchannels as $channels)
+                  @foreach($allchannels as $channel)
                     <li>
         <span
-        style="background-color:blue;
-        width: 1rem;
-        height: 1rem;
-        margin-right: .7rem;
+        style="background-color:{{$channel->color}};
+        width: 1.3rem;
+        height: 1.3rem;
+        margin-right: .9rem;
         border-radius: 50%;
         display: inline-block;">
             
-        </span><a href="/threads/{{$channels->slug}}">{{$channels->name}}</a>
+        </span><a href="/threads/{{$channel->slug}}">{{$channel->name}}</a>
                     </li>
                     @endforeach
                   </ul>
