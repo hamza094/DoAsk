@@ -15,7 +15,7 @@ class FavouritesTest extends TestCase
     {
         $this->withExceptionHandling()
             ->get('replies/1/favorites')
-            ->assertRedirect('/login');
+            ->assertRedirect('/threads');
         
     }
     

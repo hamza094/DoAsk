@@ -15,10 +15,10 @@ export default{
         .then(()=>{
    location.reload();
     flash('Registering Your Account...');
-    this.loading=false;
-    
+        
 }).catch(error=>{
     this.feedback=error.response.data;
+    this.loading=false;
 });
 }
 

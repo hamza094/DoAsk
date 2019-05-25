@@ -42,6 +42,7 @@ class ChannelController extends Controller
     {
         $channel = Channel::findOrFail($channel);
         $channel->delete();
+        cache()->forget('channels');
     }
 
     public function update(Request $request, $channel)

@@ -15,8 +15,8 @@
       <th>Sr.No</th>
       <th>Name</th>
       <th>Threads</th>
-      <th>Created_at</th>
       <th>Color</th>
+      <th>Created_at</th>
       <th>Action</th>
       <th>Status</th>
       

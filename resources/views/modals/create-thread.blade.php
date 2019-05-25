@@ -1,7 +1,6 @@
 <modal name="create-thread" height="auto" :scrollable="true">
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
-                <form action="/threads" method="post">
+                   <div class="form">
+                    <form action="/threads" method="post">
                 {{csrf_field()}}
                    <div class="form-group">
                                 <label for="channel_id">Choose a Channel:</label>
@@ -27,10 +26,13 @@
                <recaptcha ref="recaptcha" sitekey="{{ config('forum.recaptcha.key') }}"></recaptcha>
                <br>
                <div class="form-group">
-               <button class="btn btn-success" type="submit">Submit</button>
-                <button class="btn btn-primary" @click="$modal.hide('create-thread')">Close</button>   
+               <div class="form-btn">
+               <button class="btn btn-link btn-lg float-right" @click="$modal.hide('create-thread')">Close</button>  
+                <button class="btn btn-success btn-lg float-right" type="submit">Submit</button>    
                     </div>
+                        </div>
                     </form>
+    </div>
                          @if($errors->count()>0)
            <ul class="alert alert-danger">
              @foreach($errors->all() as $error)

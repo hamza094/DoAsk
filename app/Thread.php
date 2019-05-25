@@ -6,9 +6,13 @@ use Laravel\Scout\Searchable;
 use App\Events\ThreadReceivedNewReply;
 use App\Notifications\ThreadWasUpdated;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use App\Notifications\BestReply;
 
 class Thread extends Model
 {
+     use Notifiable;
+    
     use RecordActivity, Searchable;
 
     protected $guarded = [];
@@ -28,10 +32,14 @@ class Thread extends Model
     }
     
  
-  
     public function replies()
     {
         return $this->hasMany(Reply::class);
+    }
+    
+    
+    public function reply(){
+         return $this->belongsTo(Reply::class, 'best_reply_id');
     }
 
     public function creator()
@@ -126,6 +134,7 @@ class Thread extends Model
     {
         $this->update(['best_reply_id'=>$reply->id]);
         Reputation::award($reply->owner, Reputation::Reply_Marked_As_Best);
+        $reply->owner->notify(new BestReply($reply,$this));
     }
 
     /**
@@ -137,4 +146,5 @@ class Thread extends Model
     {
         return $this->toArray() + ['path' => $this->path()];
     }
+  
 }

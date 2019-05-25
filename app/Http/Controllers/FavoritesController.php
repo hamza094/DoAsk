@@ -17,6 +17,7 @@ class FavoritesController extends Controller
     {
         $reply->favorite();
         $reply->owner->increment('reputation', Reputation::Reply_Has_Favorited);
+        
 
         return back();
     }

@@ -38,7 +38,7 @@ class CreateThreadTest extends TestCase
     {
           $this->withExceptionHandling()
         ->get('/threads/create')
-            ->assertRedirect('/login');
+            ->assertRedirect('/threads');
         
     }
     
@@ -114,7 +114,7 @@ class CreateThreadTest extends TestCase
     public function an_unathorized_user_not_allow_to_delete_a_thread(){
         $this->withExceptionHandling();
         $thread=create('App\Thread');
-        $response=$this->delete($thread->path())->assertRedirect('/login');
+        $response=$this->delete($thread->path())->assertRedirect('/threads');
         $this->signIn();
         $response=$this->delete($thread->path())->assertStatus(403);
        

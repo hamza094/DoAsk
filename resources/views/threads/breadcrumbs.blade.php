@@ -14,7 +14,7 @@
 
         @if (Route::is('channels'))
             <li><span class="mx-2">&#10095;</span></li>
-            <li>{{ ucwords($channel->name) }}</li>
+            <li>{{ ($channel->name) }}</li>
         @endif
 
         @if (request()->has('popular'))

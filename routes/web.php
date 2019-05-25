@@ -22,10 +22,10 @@ Route::get('threads/create', 'ThreadController@create');
 
 Route::get('/threads/search', 'SearchController@show');
 
-Route::get('threads/{channel}/{thread}', 'ThreadController@show');
+Route::get('threads/{channel}/{thread}', 'ThreadController@show')->name('threads.show');
 Route::patch('threads/{channel}/{thread}', 'ThreadController@update');
 Route::post('threads', 'ThreadController@store');
-Route::get('threads/{channel}', 'ThreadController@index');
+Route::get('threads/{channel}', 'ThreadController@index')->name('channels');
 
 Route::post('locked-threads/{thread}', 'LockedThreadController@store')->name('locked-thread.store')->middleware('admin');
 Route::delete('locked-threads/{thread}', 'LockedThreadController@destroy')->name('locked-thread.destroy')->middleware('admin');

@@ -1,12 +1,19 @@
 <template>
 
-<li class="nav-item dropdown" v-if="notifications.length">
- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-   Notifications 
+<li class="nav-item dropdown">
+ <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+   <i class="fas fa-bell"></i><span class="notification" v-if="notifications.length"></span>
     </a>
 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-<li v-for="notification in notifications">
-    <a class="dropdown-item" :href="notification.data.link" v-text="notification.data.message" @click="markAsRead(notification)">Foobar</a>
+<li v-for="notification in notifications" :key="notification.id" v-if="notifications.length">
+    <a class="dropdown-item" :href="notification.data.link"  @click.prevent="markAsRead(notification)">
+      <img :src="notification.data.notifier.avatar_path"
+   :alt="notification.data.notifier.username">
+   <span v-html="notification.data.message"></span>
+    </a>
+</li>
+<li v-if="!notifications.length" class="dropdown-item">
+    You have zero notifications
 </li>
 
 </div>
@@ -21,12 +28,24 @@
         }
         },
             created(){
-            axios.get("/profiles/"+window.App.user.username+"/notifications")
-            .then(response=>this.notifications=response.data);
+             this.fetchNotifications();
+        },
+          computed: {
+            endpoint() {
+                return `/profiles/${window.App.user.username}/notifications`;
+            }
         },
         methods:{
+               fetchNotifications() {
+                axios.get('/profiles/' + window.App.user.name + '/notifications')
+                  .then(response => this.notifications = response.data);
+            },
             markAsRead(notification){
-                axios.delete("/profiles/"+window.App.user.username+"/notifications/"+notification.id);
+                axios.delete("/profiles/"+window.App.user.username+"/notifications/"+notification.id)
+                .then(response => {
+                    this.fetchNotifications();
+                    document.location.replace(response.data.link);
+                });
             }
         }
     }

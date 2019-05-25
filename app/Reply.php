@@ -4,9 +4,14 @@ namespace App;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use App\Notifications\ReplyLiked;
+use Auth;
 
 class Reply extends Model
 {
+      use Notifiable;
+    
     use RecordActivity;
 
     protected $guarded = [];
@@ -29,7 +34,11 @@ class Reply extends Model
         $attributes = ['user_id'=>auth()->id()];
         if (! $this->favorites()->where(['user_id'=>auth()->id()])->exists()) {
             $this->favorites()->create($attributes);
+            if (auth()->user()->id != $this->user_id){
+            $this->owner->notify(new ReplyLiked($this));
+            }
         }
+        
     }
 
     public function unfavorite()

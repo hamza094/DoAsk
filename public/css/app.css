@@ -29,21 +29,22 @@ body {
   margin: 0 !important;
 }
 
-
 @media (min-width: 1200px) {
-  .container {
+  .screen {
     max-width: 1230px !important;
   }
 }
 
 .left-sidebar {
   background-color: #ECECEC;
-  padding: 2.7rem 3rem 2.7rem 3rem;
+  padding: 5rem 3rem 2.7rem 3rem;
+  height: 100%;
+}
 
 .right-panel {
   background-color: #ECECEC;
   padding: 2.7rem;
-
+}
 
 .btn-default {
   background-color: mediumseagreen !important;
@@ -51,9 +52,7 @@ body {
   font-weight: 700 !important;
   color: #ffffff !important;
   letter-spacing: 0.2rem !important;
-
   padding: 0.7rem 3.5rem 0.7rem 3.5rem !important;
-
   margin: 0.5rem 0 0.3rem 0 !important;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) !important;
 }
@@ -82,17 +81,21 @@ body {
   color: #696969;
   font-weight: 700;
   transition: all 0.1s;
-
 }
 
 .threads ul li a:hover {
   color: cornflowerblue;
   padding-left: 0.2rem;
+  font-weight: 700;
+}
+
+.threads ul li a:hover:hover {
+  color: cornflowerblue;
 }
 
 .text-blue {
-  color: cornflowerblue;
-  font-weight: 700;
+  color: cornflowerblue !important;
+  font-weight: 700 !important;
 }
 
 .trending {
@@ -115,7 +118,6 @@ body {
 .trending ul li a {
   text-decoration: none;
 }
-
 
 .right-sidebar {
   background-color: #ffffff;
@@ -161,6 +163,7 @@ body {
 }
 
 .thread {
+  margin-top: 2.5rem;
   padding: 0rem 6rem 3rem 6rem;
 }
 
@@ -172,12 +175,57 @@ body {
   text-decoration: none;
 }
 
+.thread-info {
+  margin-top: 1.5rem;
+}
+
 .thread-info ul li {
   list-style: none;
+  display: inline-block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #696969;
+  margin-right: 0.7rem;
 }
 
 .thread-info ul li a {
   text-decoration: none;
+}
+
+.thread-info_name {
+  background-color: lightgray;
+  padding: 0.3rem 1.2rem 0.3rem 1.2rem;
+  border-radius: 0.6rem;
+}
+
+.thread-info_name a {
+  color: #696969;
+  font-weight: bold;
+}
+
+.thread-info_name a:hover {
+  color: #696969;
+  font-weight: bold;
+}
+
+.thread-info_read {
+  float: right;
+}
+
+.thread-info_read a {
+  text-decoration: none;
+  color: darkgrey;
+  font-weight: bold;
+  border: 1px solid darkgray;
+  border-radius: 0.5rem;
+  padding: 0.3rem 1rem 0.3rem 1rem;
+  font-size: 1.5rem;
+  transition: all 0.2s;
+  letter-spacing: 0.1rem;
+}
+
+.thread-info_read a:hover {
+  color: cornflowerblue;
 }
 
 .thread-border {
@@ -186,7 +234,218 @@ body {
   margin: 0 auto;
 }
 
-  
+.list-reset {
+  list-style: none;
+  padding: 2.5rem 2.5rem 0rem 2.5rem;
+  color: darkgray;
+}
+
+.list-reset li {
+  display: inline-block;
+}
+
+.form {
+  padding: 3.5rem;
+}
+
+.form label {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  padding-bottom: -0.3rem;
+}
+
+.form input {
+  height: 3.5rem;
+}
+
+.form .form-control {
+  font-size: 1.8rem !important;
+  width: 85%;
+}
+
+.form .form-group {
+  padding-bottom: 1rem;
+}
+
+.form-btn {
+  padding-bottom: 1rem !important;
+  padding-top: 1.3rem !important;
+}
+
+.form-btn .btn {
+  font-size: 1.5rem;
+}
+
+.form .form-check {
+  position: absolute;
+  margin-top: -3rem;
+}
+
+.form .form-check input {
+  position: relative;
+  top: 1.3rem;
+}
+
+.navbar-custom {
+  background-color: midnightblue;
+}
+
+.navbar-custom .fa-old-republic {
+  font-size: 4rem;
+  padding: 0.3rem 0 0 0.3rem;
+}
+
+.navbar-barnd {
+  position: absolute;
+}
+
+.site-text {
+  font-size: 2.1rem;
+  font-weight: 700;
+  padding-left: 1.2rem;
+  letter-spacing: 0.2rem;
+  color: #ffffff;
+  position: relative;
+  top: -0.8rem;
+}
+
+.searchbar {
+  margin-top: 0.4rem;
+  height: 40px;
+  background-color: #353b48;
+  border-radius: 30px;
+}
+
+.nav-item input:-webkit-autofill,
+.nav-item input:-webkit-autofill:hover,
+.nav-item input:-webkit-autofill:focus,
+.nav-item textarea:-webkit-autofill,
+.nav-item textarea:-webkit-autofill:hover,
+.nav-item textarea:-webkit-autofill:focus,
+.nav-item select:-webkit-autofill,
+.nav-item select:-webkit-autofill:hover,
+.nav-item select:-webkit-autofill:focus > .searchbar {
+  margin-top: 0.4rem !important;
+  height: 40px !important;
+  background-color: #353b48 !important;
+  border-radius: 30px !important;
+  -webkit-box-shadow: inset 0 0 0px 9999px #353b48;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+.search_input {
+  color: white;
+  border: 0;
+  outline: 0;
+  background: none;
+  width: 0;
+  caret-color: transparent;
+  line-height: 40px;
+  transition: width 0.4s linear;
+}
+
+.searchbar:hover > .search_input {
+  padding: 0 10px;
+  width: 250px;
+  caret-color: mediumseagreen;
+  transition: width 0.4s linear;
+}
+
+.searchbar:hover > .search_icon {
+  background: white;
+  color: mediumseagreen;
+}
+
+.search_icon {
+  height: 40px;
+  width: 40px;
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: white;
+}
+
+.fa-search {
+  padding-right: 0rem !important;
+}
+
+.fa-bell {
+  background-color: #353b48;
+  padding: 1.1rem;
+  border-radius: 50%;
+  margin-left: 0.3rem;
+}
+
+.fa-user {
+  background-color: #353b48;
+  padding: 1.1rem;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.notification {
+  background-color: cornflowerblue;
+  width: 0.8rem;
+  height: 0.8rem;
+  display: inline-block;
+  border-radius: 50%;
+  position: relative;
+  top: -1.4rem;
+  left: -1.4rem;
+  margin-right: -1rem;
+}
+
+.dropdown-menu {
+  background-color: lightgrey !important;
+  border-radius: 1rem !important;
+  top: 3.3rem !important;
+  opacity: 1;
+  right: -2rem;
+}
+
+.dropdown-item {
+  font-size: 1.7rem;
+}
+
+.dropdown-item img {
+  width: 2.3rem;
+  height: 2.1rem;
+  border-radius: 50%;
+}
+
+.single-thread {
+  padding: 2.5rem 6rem 3rem 6rem;
+}
+
+.single-thread_avatar img {
+  width: 4.7rem;
+  height: 4.7rem;
+  border-radius: 50%;
+}
+
+.single-thread_title {
+  color: cornflowerblue;
+  font-weight: 700;
+  font-size: 2.3rem;
+  letter-spacing: 0.1rem;
+}
+
+.single-thread_links ul li {
+  list-style: none;
+  display: inline-block;
+}
+
+.single-thread_links ul li:not(:last-child) {
+  border-right: 1px solid lightgrey;
+  padding-right: 0.5rem;
+}
+
+.right-content {
+  padding-left: 1rem;
+}
 
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
@@ -10899,6 +11158,5 @@ a.text-dark:focus {
     -webkit-transform: rotate(359deg);
     transform: rotate(359deg);
   }
-
 }
 

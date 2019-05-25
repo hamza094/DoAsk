@@ -20,7 +20,7 @@ class ParticipationTest extends TestCase
       $this->withExceptionHandling();
       $reply=create('App\Reply');
       $this->delete("/replies/{$reply->id}")
-          ->assertRedirect('login');
+          ->assertRedirect('threads');
       
       $this->signIn()
       ->delete("/replies/{$reply->id}")
@@ -43,7 +43,7 @@ class ParticipationTest extends TestCase
       $this->withExceptionHandling();
       $reply=create('App\Reply');
       $this->patch("/replies/{$reply->id}")
-          ->assertRedirect('login');
+          ->assertRedirect('threads');
       
       $this->signIn()
       ->patch("/replies/{$reply->id}")

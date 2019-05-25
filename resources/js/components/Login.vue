@@ -5,7 +5,7 @@
 export default{
     data(){
         return{
-        form:{email:'',password:''},    
+        form:{email:'',password:'',remember:''},    
         feedback:'',
         loading:false
         }

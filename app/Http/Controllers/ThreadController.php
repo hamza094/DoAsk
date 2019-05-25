@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use App\Rules\Recaptcha;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use App\Reply;
 
 class ThreadController extends Controller
 {
@@ -45,12 +46,12 @@ class ThreadController extends Controller
 
         $threads = $threads->paginate(config('forum.pagination.perPage'));
         
-        $channels = Channel::all();
-
+       
+        
         return view('threads.index', [
             'threads'=>$threads,
             'trending'=>$trending->get(),
-            'channels'=>$channels
+            'channel'=>$channel
         ]);
     }
 
@@ -116,11 +117,13 @@ class ThreadController extends Controller
         $trending->push($thread);
 
         $thread->increment('visits');
-
+           
         return view('threads.show',[
             'thread'=>$thread,
-            'trending'=>$trending->get()
-        ]);
+            'trending'=>$trending->get(),
+            ]);
+        
+        
     }
 
     /**
