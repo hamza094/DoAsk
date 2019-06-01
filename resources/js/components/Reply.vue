@@ -1,15 +1,18 @@
 <template>
     
-            <div class="card" :id="'reply-'+id">
-               <div class="card-header" :class="isBest ? ' bg-success': 'bg-default'">
-                          <a :href="'/profiles/'+data.owner.username"
-                     v-text="data.owner.username" :class="isBest ? 'text-white': 'text-default'">
-                         </a> said <span v-text="ago"></span>
-               <div v-if="signedIn">
-                <favorite :reply="data"></favorite>
+            <div  :id="'reply-'+id" :class="isBest ? 'single-thread_replies_best': ''">
+               <div>
+                         <span class="single-thread_avatar"><img src="/storage/avatars/default.png" alt=""></span> 
+                         <div v-if="signedIn">
+                <favorite :reply="data" class="float-right"></favorite>
                     </div>
-                </div>
-                <div class="card-body">
+                          <a :href="'/profiles/'+data.owner.username"
+                     v-text="data.owner.username" :class="isBest ? '': 'text-default'">
+                         </a> said <span v-text="ago"></span>
+                         <h1>vue text</h1>
+                         <button></button>
+                     </div>
+                <div >
                    <div v-if="editing">
                      <form @submit="update">
                       <div class="form-group">
@@ -24,10 +27,10 @@
                        
                    </div>
                      </div>
-                 <div class="card-footer level" v-if="authorize('updateReply',reply) || authorize('updateThread',reply.thread)">
+                 <div class="level" v-if="authorize('updateReply',reply) || authorize('updateThread',reply.thread)">
              <div  v-if="authorize('updateReply',reply)">
-                <button class="btn btn-sm btn-secondary mr-1" @click="editing=true">Edit</button>
-                <button class="btn btn-sm btn-danger" @click="destroy">Delete</button>
+                <button class="btn btn-sm btn-primary mr-1 float-right" @click="editing=true"><i class="far fa-edit"></i></button>
+                <button class="btn btn-sm btn-danger float-right" @click="destroy"><i class="far fa-trash-alt"></i></button>
                 </div>
                 <button class="btn btn-sm btn-light" @click="markBestReply" v-if="authorize('updateThread',reply.thread)">Best Reply?</button>
                 </div>
@@ -45,6 +48,7 @@
         components:{Favorite},
         data() {
             return {
+                isVisible:false,
                 editing: false,
                 id:this.data.id,
                 body: this.data.body,

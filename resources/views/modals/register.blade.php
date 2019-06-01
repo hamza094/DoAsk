@@ -4,14 +4,14 @@
     <form action="" @submit.prevent="register">
        <div class="form-group">
         <label for="name" class="label text-muted">Name</label>
-        <input type="name" name="name" id="name" class="form-control" autocomplete="name" v-model="form.name" value="{{old('name')}}" required
+        <input type="text" name="name" id="name" class="form-control" autocomplete="name" v-model="form.name" value="{{old('name')}}" required
         @keydown="errors.name = false">
          <span v-if="errors.name" v-text="errors.name[0]" class="text-danger"></span>
         </div>
         
         <div class="form-group">
         <label for="username" class="label text-muted">Userame</label>
-        <input type="username" name="username" id="username" class="form-control" autocomplete="username" v-model="form.username" value="{{old('username')}}" required
+        <input type="text" name="username" id="username" class="form-control" autocomplete="username" v-model="form.username" value="{{old('username')}}" required
         @keydown="errors.username = false">
          <span v-if="errors.username" v-text="errors.username[0]" class="text-danger"></span>
         </div>

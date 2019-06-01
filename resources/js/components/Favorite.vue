@@ -1,8 +1,11 @@
 <template>
-    <button type="submit" :class="classes" class="float-right" @click="toggle">
-    <span class="glyphicon glyphicon-heart"></span>
-    <span v-text="favoriteCount"></span>
-    </button>
+   <div>
+    <button type="submit" class="btn fav"  @click="toggle">
+    <i class="fas" :class="classes"></i>
+     </button>
+    
+        <span v-text="favoriteCount" class="fav-count" ></span>
+        </div>
 </template>
    <script>
     export default {
@@ -15,7 +18,7 @@
          },
         computed:{
           classes(){
-              return['btn',this.isFavorited ? 'btn-success': 'btn-primary'];
+              return['fa-heart',this.isFavorited ? 'favorite': 'unfavorite'];
           }
         },
         methods:{

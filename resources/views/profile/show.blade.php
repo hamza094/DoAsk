@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-<div class="col-md-8">
+<div class="profiles">
 <div class="jumbotron">
   <avatar-form :user="{{$profileUser}}"></avatar-form>
   <p>Since {{$profileUser->created_at->diffforHumans()}}</p>
+   <button class="btn btn-primary"  @click="$modal.show('profile')">Update</button>
     </div>
     <h3 class="text-center"><i>Activity Feed</i></h3>
       @foreach($activities as $date=>$activity)
@@ -17,9 +17,6 @@
           @endif
            @endforeach
             @endforeach
-    
-    <div class="col-md-4">
-        
-    </div>
 </div>
+    
 @endsection

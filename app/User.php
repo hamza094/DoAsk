@@ -15,6 +15,8 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var array
      */
+    
+    
     protected $fillable = [
         'name', 'email', 'password', 'avatar_path'
     ];
@@ -34,6 +36,10 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $hidden = [
         'password', 'remember_token', 'email'
     ];
+    
+      public function experince(){
+        return $this->hasOne(Experince::class);
+    }
 
     public function threads()
     {

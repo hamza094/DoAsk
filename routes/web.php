@@ -14,9 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
 Auth::routes(['verify'=>true]);
 
 Route::get('/home', 'HomeController@index')->middleware('verified');
+Route::get('/vue', 'HomeController@vue');
 Route::get('threads', 'ThreadController@index')->name('threads');
 Route::get('threads/create', 'ThreadController@create');
 
@@ -41,6 +43,7 @@ Route::get('/replies/{reply}/unfavorites', 'FavoritesController@destroy')->name(
 Route::post('/replies/{reply}/best', 'BestRepliesController@store')->name('best-replies.store');
 
 Route::get('/profiles/{user}', 'ProfilesController@show')->name('profile');
+Route::patch('/profile/{user}', 'ProfilesController@update')->name('profiles.update');
 Route::delete('threads/{channel}/{thread}', 'ThreadController@destroy');
 Route::delete('replies/{reply}', 'ReplyController@destroy');
 Route::patch('replies/{reply}', 'ReplyController@update');

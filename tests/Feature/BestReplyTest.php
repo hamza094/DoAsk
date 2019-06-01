@@ -6,6 +6,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\DB;
+use App\Channel;
 
 class BestReplyTest extends TestCase
 {
@@ -46,4 +47,5 @@ class BestReplyTest extends TestCase
         $this->getJson(route('replies.delete',$reply));
         $this->assertNull($reply->thread->fresh()->best_reply_id);
     }
-}
+    
+ }

@@ -31,5 +31,5 @@
 </div>
 <div class="thread-border"></div>
 @empty
-    <h3 class="text-center">Sorry! There are no relevant results at this time</h3>
+    <h2 class="text-center mt-3">Sorry! There are no relevant results at this time</h2>
 @endforelse

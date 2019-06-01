@@ -7,7 +7,7 @@ return[
   ],
     'adminstrators'=>[
 
-        'nash39@example.com'
+        'cterry@example.com'
 
     ],
      'reputation' => [

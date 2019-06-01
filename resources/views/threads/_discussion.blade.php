@@ -33,7 +33,7 @@
     <span class="single-thread_title" v-text="this.form.title"></span>
     <div class="single-thread_links">
         <ul>
-        <li>Posted by: <a href="{{route('profile',$thread->creator)}}">{{$thread->creator->username}} ({{ $thread->creator->reputation }} XP)</a></li>
+            <li>Posted by: <a href="{{route('profile',$thread->creator)}}">{{$thread->creator->username}} (<small>{{ $thread->creator->reputation }} XP </small>)</a></li>
         <li v-if="authorize('updateThread',thread)">
         <button class="btn btn-sm btn-primary" @click="editing=true">Edit</button>
         </li>
