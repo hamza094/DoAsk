@@ -440,6 +440,15 @@ select:-webkit-autofill:focus > .searchbar{
             }
         }
     }
+    &_btn{
+        font-size: 1.1rem !important;
+        
+    }
+    &_input{
+        .form-control{
+            font-size: 1.7rem !important;
+        }
+    }
 }
 .right-content{
    padding-left: 1rem;
@@ -468,4 +477,24 @@ select:-webkit-autofill:focus > .searchbar{
     padding: 2.5rem 6rem 3rem 6rem;
 }
 
+.activity{
+    border-left: 2px solid lightgrey;
+    padding-left: 1.5rem;
+    &_heading{
+        
+    }
+    &_body{
+        
+    }
+    &:before{
+        content:'';
+          background-color: $primary-blue;
+        width:2.3rem;
+        height: 2.3rem;
+        float:left;
+        border-radius: 50%;
+        position: absolute;
+        left:5rem;
+    }
+}
 

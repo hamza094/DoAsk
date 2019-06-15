@@ -19,12 +19,23 @@
         <label for="email" class="label text-muted">Email</label>
         <input type="Email" name="email" id="email" class="form-control" autocomplete="email"  value="{{auth()->user()->email}}" required>
         </div>
-        
+         <div class="form-group">
+                <label for="password" class="label text-muted">New Password:</label>
+                <input type="password" name="password" id="password" class="form-control" placeholder="Enter new password">
+            </div>
           <div class="form-btn">
-               <button class="btn btn-primary btn-lg float-right">Update</button>
+               <button class="btn btn-primary btn-lg float-right" type="submit">Update</button>
         </div>
     </form>
        </div>
+             @if($errors->count()>0)
+           <ul class="alert alert-danger">
+             @foreach($errors->all() as $error)
+            <li>{{$error}}</li>
+             @endforeach
+          </ul>
+    
+    @endif
 </modal>
 
 

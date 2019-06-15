@@ -1,8 +1,9 @@
-<div class="card mb-3">
-    <div class="card-header">
+<div class="mb-3">
+   <span class="activity_menu"></span>
+    <div class="activity_heading">
         {{$heading}}
     </div>
-    <div class="card-body">
+    <div class="activity_body">
         {{$body}}
     </div>
 </div>

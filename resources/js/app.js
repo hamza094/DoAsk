@@ -66,7 +66,6 @@ Vue.component('pagination', require('laravel-vue-pagination'));
 //Vue.component('channel-dropdown', require('./components/ChannelDropdown.vue').default);
 Vue.component('login', require('./components/Login.vue').default);
 Vue.component('register', require('./components/Register.vue').default);
-Vue.component('tabs', require('./components/Tabs.vue').default);
 Vue.component('recaptcha', require('./components/Recaptcha.vue').default);
 Vue.component('thread-wysiwg', require('./components/ThreadWysiwyg.vue').default);
 

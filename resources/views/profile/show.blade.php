@@ -8,6 +8,7 @@
    <button class="btn btn-primary"  @click="$modal.show('profile')">Update</button>
     </div>
     <h3 class="text-center"><i>Activity Feed</i></h3>
+     <div class="activity">
       @foreach($activities as $date=>$activity)
     <h3 class="mt-5">{{$date}}</h3>
      <hr class="my-4">
@@ -17,6 +18,7 @@
           @endif
            @endforeach
             @endforeach
+            </div>
 </div>
     
 @endsection

@@ -1,5 +1,5 @@
 <div class="card" v-if="editing">
-    <div class="card-header">
+    <div class="card-header single-thread_input">
             <input type="text" class="form-control" v-model="form.title">
     </div>
     
@@ -10,12 +10,12 @@
        </div>
     </div>
     <div class="card-footer">
-        <button class="btn btn-sm btn-primary" @click="Update">Update</button>
-        <button class="btn btn-sm btn-link" @click="cancel">Cancel</button>
+        <button class="btn btn-sm btn-primary single-thread_btn" @click="Update">Update</button>
+        <button class="btn btn-sm btn-link single-thread_btn" @click="cancel">Cancel</button>
           @can('update',$thread)
         <form action="{{$thread->path()}}" method="post" class="float-right">
             {{csrf_field()}} {{method_field('DELETE')}}
-            <button type="submit" class="btn btn-danger btn-sm">Delete Thread</button>
+            <button type="submit" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
         </form>
         @endcan
     </div>
@@ -35,7 +35,7 @@
         <ul>
             <li>Posted by: <a href="{{route('profile',$thread->creator)}}">{{$thread->creator->username}} (<small>{{ $thread->creator->reputation }} XP </small>)</a></li>
         <li v-if="authorize('updateThread',thread)">
-        <button class="btn btn-sm btn-primary" @click="editing=true">Edit</button>
+        <button class="btn btn-sm btn-primary" @click="editing=true"><i class="far fa-edit"></i></button>
         </li>
           @if(auth()->check())
         @if(auth()->user()->email_verified_at!==null)

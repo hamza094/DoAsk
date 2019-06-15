@@ -18,7 +18,7 @@ Route::get('/', function () {
 Auth::routes(['verify'=>true]);
 
 Route::get('/home', 'HomeController@index')->middleware('verified');
-Route::get('/vue', 'HomeController@vue');
+Route::get('/changePassword','HomeController@showChangePasswordForm');
 Route::get('threads', 'ThreadController@index')->name('threads');
 Route::get('threads/create', 'ThreadController@create');
 

@@ -11,8 +11,8 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('auth');
-        //$this->middleware('verified');
+        $this->middleware('auth');
+        $this->middleware('verified');
     }
 
     /**
@@ -24,9 +24,8 @@ class HomeController extends Controller
     {
         return view('home');
     }
-    
-    public function vue(){
-        return view('vue');
+   public function showChangePasswordForm(){
+        return view('auth.changepassord');
     }
     
 }

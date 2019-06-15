@@ -14,8 +14,8 @@
                     v-model="body"></textarea>-->
               </div>
               <button type="submit"
-               class="btn btn-primary"
-               @click="addReply">Post</button>
+               class="btn btn-primary single-thread_btn"
+               @click="addReply">Add Reply</button>
     
     </div>
     
