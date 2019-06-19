@@ -1,17 +1,20 @@
 <template>
     <div>
-    <img :src="avatar" width="75" height="75" class="mt-3 rounded">
-
+    <div class="row">
+    <div class="col-md-3">
+    <img :src="avatar" width="95" height="95" class="mt-3 profiles_avatar">
+    </div>
+    <div class="col-md-9 mt-4">
 <h1> 
     {{user.name}}
-    (<small class="text-muted" v-text="user.username"></small>)
+    <i><small class="text-muted" v-text="user.username"></small></i>
 </h1>
-<span>Points: <b>{{user.reputation}}XP</b></span>
-<br><br>
-<form v-if="canUpdate"  method="POST" enctype="multipart/form-data">
+<form v-if="canUpdate"  method="POST" enctype="multipart/form-data" class="pt-1">
     <input type="file" name="avatar" accept="image/*" @change="onChange">
     </form>
-
+    </div>
+</div>
+   
     </div>
 </template>
 

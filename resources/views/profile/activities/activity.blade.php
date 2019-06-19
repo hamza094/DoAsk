@@ -1,5 +1,4 @@
 <div class="mb-3">
-   <span class="activity_menu"></span>
     <div class="activity_heading">
         {{$heading}}
     </div>

@@ -27,7 +27,7 @@
              </div>
              <div class="card-body">
                  <ais-search-box>
-                       <ais-input placeholder="Find a thread..." :autofocus="true" class="form-control"></ais-input>
+                       <ais-input placeholder="Find a thread..." :autofocus="true" class="form-control search_input"></ais-input>
                  </ais-search-box>
                  
              </div>

@@ -509,13 +509,24 @@ body {
   padding: 2.5rem 6rem 3rem 6rem;
 }
 
+.profiles_background {
+  background-color: aliceblue;
+  width: 100%;
+  padding: 2.5rem 3rem 3rem 3rem;
+}
+
+.profiles_avatar {
+  border-radius: 50%;
+  border: 3px solid mediumseagreen;
+  padding: 0.2rem;
+}
+
 .activity {
   border-left: 2px solid lightgrey;
   padding-left: 1.5rem;
 }
 
-.activity:before {
-  content: "";
+.activity_menu {
   background-color: cornflowerblue;
   width: 2.3rem;
   height: 2.3rem;
@@ -523,6 +534,31 @@ body {
   border-radius: 50%;
   position: absolute;
   left: 5rem;
+  border: 1px solid mediumseagreen;
+}
+
+.users {
+  padding: 0.7rem 0 0.5rem 0;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  border-radius: 10%;
+}
+
+.users:not(:last-child) {
+  margin-right: 1.5rem;
+}
+
+.users_count {
+  color: darkgray;
+}
+
+.users_info {
+  color: lightgray;
+  font-weight: 700;
+}
+
+.form-control {
+  font-size: 1.7rem !important;
 }
 
 /*!
