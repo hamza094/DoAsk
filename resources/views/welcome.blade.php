@@ -89,7 +89,7 @@
                 <span class="m-b-md">Seek To Find</span>
                 <div class="links">
                     <a href="/threads">Join Discussion</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="https://github.com/hamza094/Social-Forum" target="_blank">GitHub</a>
                 </div>
             </div>
         </div>
