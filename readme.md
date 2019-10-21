@@ -1,5 +1,5 @@
-# Social-Forum [![Build Status](https://travis-ci.org/hamza094/Social-Forum.svg?branch=master)](https://travis-ci.org/hamza094/Social-Forum) [![StyleCI](https://github.styleci.io/repos/180169455/shield?branch=master)](https://github.styleci.io/repos/180169455)
-This is an open source forum that is built in Laravel and vue quite similar to laracast forum.
+# Social-Forum [![Build Status](https://travis-ci.org/hamza094/Social-Forum.svg?branch=master)](https://travis-ci.org/hamza094/Social-Forum)
+This is an open source forum that is built in Laravel and Vue.js designed with Sass.
 
 # Installation
 ## Step 1.
@@ -11,6 +11,8 @@ Begin by cloning this repository to your machine, and installing all Composer de
 - cd socialforum && composer install
 - php artisan key:generate
 - mv .env.example .env
+
+If you want use Redis as your cache driver you need to install the Redis Server. You can either use homebrew on a Mac or compile from source (https://redis.io/topics/quickstart).
 ## Step 2.
 Next, create a new database and reference its name and username/password within the project's .env file. In the example below, we've named the database, "socialforum"
 
@@ -32,10 +34,5 @@ Once submitted, you'll see two important keys that should be referenced in your 
 - RECAPTCHA_KEY=PASTE_KEY_HERE
 - RECAPTCHA_SECRET=PASTE_SECRET_HERE
 ## Step 4.
-Until an administration portal is available, manually insert any number of "channels" (think of these as forum categories) into the "channels" table in your database.
+Use an administration portal to add channels.
 
-Once finished, clear your server cache, and you're all set to go!
-
-php artisan cache:clear
-## Step 5.
-Use your forum! Visit http://localhost:8000/threads/create to create a new account and publish your first thread.
