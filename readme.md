@@ -34,5 +34,7 @@ Once submitted, you'll see two important keys that should be referenced in your 
 - RECAPTCHA_KEY=PASTE_KEY_HERE
 - RECAPTCHA_SECRET=PASTE_SECRET_HERE
 ## Step 4.
-Use an administration portal to add channels.
+- Edit config/forum.php, and add any email address that should be marked as an administrator.
+- Use an administration portal to add channels.
 
+For live view visit site https://doask.herokuapp.com/threads
