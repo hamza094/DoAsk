@@ -9,13 +9,12 @@ use Carbon\Carbon;
 use App\Rules\Recaptcha;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use App\Reply;
 
 class ThreadController extends Controller
 {
     public function __construct()
     {
-      $this->middleware('auth')->except(['index', 'show']);
+        $this->middleware('auth')->except(['index', 'show']);
         $this->middleware('verified')->except(['index', 'show']);
     }
 
@@ -30,7 +29,7 @@ class ThreadController extends Controller
         if ($channel->exists) {
             $threads = $channel->threads()->latest();
         } else {
-            $threads = Thread::orderBy('pinned','Desc')->latest();
+            $threads = Thread::orderBy('pinned', 'Desc')->latest();
         }
 
         if ($username = request('by')) {
@@ -45,9 +44,7 @@ class ThreadController extends Controller
         }
 
         $threads = $threads->paginate(config('forum.pagination.perPage'));
-        
-       
-        
+
         return view('threads.index', [
             'threads'=>$threads,
             'trending'=>$trending->get(),
@@ -80,9 +77,9 @@ class ThreadController extends Controller
             'body'=>'required|spamfree',
             'channel_id'=>[
             'required',
-               Rule::exists('channels','id')->where(function($query){
-                   $query->where('archived',false);
-               }) 
+               Rule::exists('channels', 'id')->where(function ($query) {
+                   $query->where('archived', false);
+               })
             ],
            'g-recaptcha-response'=>['required', $recaptcha]
         ]);
@@ -117,13 +114,11 @@ class ThreadController extends Controller
         $trending->push($thread);
 
         $thread->increment('visits');
-           
-        return view('threads.show',[
+
+        return view('threads.show', [
             'thread'=>$thread,
             'trending'=>$trending->get(),
             ]);
-        
-        
     }
 
     /**

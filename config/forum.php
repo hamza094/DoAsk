@@ -20,4 +20,3 @@ return[
         'perPage'=>25
     ]
 ];
-

@@ -20,6 +20,7 @@ class UserNotificationsController extends Controller
     {
         $notification = auth()->user()->notifications()->findOrFail($notificationId);
         $notification->markAsRead();
+
         return json_encode(
             $notification->data
         );
