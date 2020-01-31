@@ -15,12 +15,10 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var array
      */
-    
-    
     protected $fillable = [
         'name', 'email', 'password', 'avatar_path'
     ];
-    
+
     protected $appends = ['isAdmin'];
 
     public function getRouteKeyName()
@@ -36,8 +34,9 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $hidden = [
         'password', 'remember_token', 'email'
     ];
-    
-      public function experince(){
+
+    public function experince()
+    {
         return $this->hasOne(Experince::class);
     }
 
@@ -45,8 +44,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Thread::class)->latest();
     }
-    
-    public function replies(){
+
+    public function replies()
+    {
         return $this->hasMany(Reply::class);
     }
 
@@ -69,8 +69,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return in_array($this->email, config('forum.adminstrators'));
     }
-    
-    public function getisAdminAttribute(){
+
+    public function getisAdminAttribute()
+    {
         return $this->isAdmin();
     }
 }

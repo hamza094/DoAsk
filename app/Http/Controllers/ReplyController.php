@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Reply;
 use App\Thread;
-use App\Rules\SpamFree;
 use Illuminate\Http\Request;
 use App\Http\Forms\CreatePostForm;
 

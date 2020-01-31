@@ -20,7 +20,7 @@ class ChannelController extends Controller
 
     public function show()
     {
-        return Channel::withoutGlobalScopes()->orderby('name','asc')->paginate(5);
+        return Channel::withoutGlobalScopes()->orderby('name', 'asc')->paginate(5);
     }
 
     public function store(Request $request)
@@ -34,7 +34,7 @@ class ChannelController extends Controller
            'name'=>request('name'),
             'color'=>request('color')
            ]);
-        
+
         cache()->forget('channels');
     }
 
@@ -49,14 +49,14 @@ class ChannelController extends Controller
     {
         $channel = Channel::findOrFail($channel);
         $this->validate($request, [
-            'name'=>['required',Rule::unique('channels')->ignore($channel->id)],
+            'name'=>['required', Rule::unique('channels')->ignore($channel->id)],
             'archived'=>'required|boolean',
             'color'=>'required|string',
-            
+
         ]);
 
-        $channel->update(request(['name','archived','color']));
-        
+        $channel->update(request(['name', 'archived', 'color']));
+
         cache()->forget('channels');
     }
 }

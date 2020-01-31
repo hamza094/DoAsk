@@ -4,15 +4,13 @@ namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
 
 class BestReply extends Notification
 {
     use Queueable;
-    
+
     protected $reply;
-    
+
     protected $thread;
 
     /**
@@ -20,10 +18,10 @@ class BestReply extends Notification
      *
      * @return void
      */
-    public function __construct($reply,$thread)
+    public function __construct($reply, $thread)
     {
         $this->reply = $reply;
-        $this->thread=$thread;
+        $this->thread = $thread;
     }
 
     /**
@@ -37,7 +35,7 @@ class BestReply extends Notification
         return ['database'];
     }
 
-      /**
+    /**
      * Get the array representation of the notification.
      *
      * @param  mixed  $notifiable

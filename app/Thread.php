@@ -3,21 +3,20 @@
 namespace App;
 
 use Laravel\Scout\Searchable;
+use App\Notifications\BestReply;
 use App\Events\ThreadReceivedNewReply;
 use App\Notifications\ThreadWasUpdated;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
-use App\Notifications\BestReply;
 
 class Thread extends Model
 {
-     use Notifiable;
-    
+    use Notifiable;
     use RecordActivity, Searchable;
 
     protected $guarded = [];
-    
-    protected $casts=[
+
+    protected $casts = [
       'locked'=> 'boolean',
        'pinned'=>'boolean'
     ];
@@ -30,16 +29,15 @@ class Thread extends Model
     {
         return "/threads/{$this->channel->slug}/{$this->slug}";
     }
-    
- 
+
     public function replies()
     {
         return $this->hasMany(Reply::class);
     }
-    
-    
-    public function reply(){
-         return $this->belongsTo(Reply::class, 'best_reply_id');
+
+    public function reply()
+    {
+        return $this->belongsTo(Reply::class, 'best_reply_id');
     }
 
     public function creator()
@@ -134,7 +132,7 @@ class Thread extends Model
     {
         $this->update(['best_reply_id'=>$reply->id]);
         Reputation::award($reply->owner, Reputation::Reply_Marked_As_Best);
-        $reply->owner->notify(new BestReply($reply,$this));
+        $reply->owner->notify(new BestReply($reply, $this));
     }
 
     /**
@@ -146,5 +144,4 @@ class Thread extends Model
     {
         return $this->toArray() + ['path' => $this->path()];
     }
-  
 }

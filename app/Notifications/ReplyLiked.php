@@ -4,17 +4,14 @@ namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
 
 class ReplyLiked extends Notification
 {
     use Queueable;
-    
+
     protected $reply;
-    
- 
-     /**
+
+    /**
      * Create a new notification instance.
      *
      * @return void
@@ -22,7 +19,6 @@ class ReplyLiked extends Notification
     public function __construct($reply)
     {
         $this->reply = $reply;
-        
     }
 
     /**
@@ -35,8 +31,6 @@ class ReplyLiked extends Notification
     {
         return ['database'];
     }
-
- 
 
     /**
      * Get the array representation of the notification.

@@ -2,20 +2,19 @@
 
 namespace App;
 
+use Auth;
 use Carbon\Carbon;
+use App\Notifications\ReplyLiked;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
-use App\Notifications\ReplyLiked;
-use Auth;
 
 class Reply extends Model
 {
-      use Notifiable;
-    
+    use Notifiable;
     use RecordActivity;
 
     protected $guarded = [];
-    protected $appends = ['favoritesCount', 'isFavorited', 'isBest','xp'];
+    protected $appends = ['favoritesCount', 'isFavorited', 'isBest', 'xp'];
 
     protected $with = ['owner', 'favorites'];
 
@@ -34,11 +33,10 @@ class Reply extends Model
         $attributes = ['user_id'=>auth()->id()];
         if (! $this->favorites()->where(['user_id'=>auth()->id()])->exists()) {
             $this->favorites()->create($attributes);
-            if (auth()->user()->id != $this->user_id){
-            $this->owner->notify(new ReplyLiked($this));
+            if (auth()->user()->id != $this->user_id) {
+                $this->owner->notify(new ReplyLiked($this));
             }
         }
-        
     }
 
     public function unfavorite()
@@ -79,10 +77,11 @@ class Reply extends Model
 
     public function path()
     {
-         $perPage = config('forum.pagination.perPage');
-         $replyPosition = $this->thread->replies()->pluck('id')->search($this->id) + 1;
-         $page = ceil($replyPosition / $perPage);
-         return $this->thread->path()."?page={$page}#reply-{$this->id}";
+        $perPage = config('forum.pagination.perPage');
+        $replyPosition = $this->thread->replies()->pluck('id')->search($this->id) + 1;
+        $page = ceil($replyPosition / $perPage);
+
+        return $this->thread->path()."?page={$page}#reply-{$this->id}";
     }
 
     public function wasJustPublished()
@@ -105,8 +104,8 @@ class Reply extends Model
             $body
         );
     }
-    
-      /**
+
+    /**
      * Calculate the correct XP amount earned for the current reply.
      */
     public function getXpAttribute()
@@ -115,6 +114,7 @@ class Reply extends Model
         if ($this->isBest()) {
             $xp += config('forum.reputation.best_reply_awarded');
         }
+
         return $xp += $this->favorites()->count() * config('council.reputation.reply_favorited');
     }
 
