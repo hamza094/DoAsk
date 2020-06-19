@@ -2,9 +2,9 @@
 
 namespace App;
 
+use App\Notifications\ReplyLiked;
 use Auth;
 use Carbon\Carbon;
-use App\Notifications\ReplyLiked;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 

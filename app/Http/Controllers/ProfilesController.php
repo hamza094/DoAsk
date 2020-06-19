@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
-use Request;
-use App\User;
 use App\Activity;
+use App\User;
+use Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Input;
+use Request;
 
 class ProfilesController extends Controller
 {
@@ -26,7 +25,7 @@ class ProfilesController extends Controller
     {
         return view('profile.show', [
             'profileUser' => $user,
-           'activities'=>Activity::feed($user)
+            'activities'=>Activity::feed($user)
         ]);
     }
 

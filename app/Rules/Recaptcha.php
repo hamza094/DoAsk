@@ -2,8 +2,8 @@
 
 namespace App\Rules;
 
-use Zttp\Zttp;
 use Illuminate\Contracts\Validation\Rule;
+use Zttp\Zttp;
 
 class Recaptcha implements Rule
 {
@@ -27,9 +27,9 @@ class Recaptcha implements Rule
     public function passes($attribute, $value)
     {
         $response = Zttp::asFormParams()->post('https://www.google.com/recaptcha/api/siteverify', [
-        'secret'=>config('services.recaptcha.secret'),
-        'response'=>$value,
-        'remoteip'=>request()->ip()
+            'secret'=>config('services.recaptcha.secret'),
+            'response'=>$value,
+            'remoteip'=>request()->ip()
         ]);
 
         return $response->json()['success'];

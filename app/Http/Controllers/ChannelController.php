@@ -31,9 +31,9 @@ class ChannelController extends Controller
         ]);
 
         $channel = Channel::create([
-           'name'=>request('name'),
+            'name'=>request('name'),
             'color'=>request('color')
-           ]);
+        ]);
 
         cache()->forget('channels');
     }
