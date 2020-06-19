@@ -2,12 +2,12 @@
 
 namespace App;
 
-use Laravel\Scout\Searchable;
-use App\Notifications\BestReply;
 use App\Events\ThreadReceivedNewReply;
+use App\Notifications\BestReply;
 use App\Notifications\ThreadWasUpdated;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Scout\Searchable;
 
 class Thread extends Model
 {
@@ -17,8 +17,8 @@ class Thread extends Model
     protected $guarded = [];
 
     protected $casts = [
-      'locked'=> 'boolean',
-       'pinned'=>'boolean'
+        'locked'=> 'boolean',
+        'pinned'=>'boolean'
     ];
 
     protected $with = ['channel'];

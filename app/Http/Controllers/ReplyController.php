@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Forms\CreatePostForm;
 use App\Reply;
 use App\Thread;
 use Illuminate\Http\Request;
-use App\Http\Forms\CreatePostForm;
 
 class ReplyController extends Controller
 {
@@ -26,8 +26,8 @@ class ReplyController extends Controller
         }
 
         $reply = $thread->addReply([
-          'body'=>request('body'),
-           'user_id'=>auth()->id()
+            'body'=>request('body'),
+            'user_id'=>auth()->id()
         ]);
 
         if (request()->expectsJson()) {

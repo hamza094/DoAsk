@@ -2,15 +2,15 @@
 
 namespace App;
 
-use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Channel extends Model
 {
     protected $guarded = [];
 
     protected $casts = [
-       'archived'=>'boolean'
+        'archived'=>'boolean'
     ];
 
     public function getRouteKeyName()

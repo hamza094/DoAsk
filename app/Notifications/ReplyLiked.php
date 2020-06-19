@@ -41,7 +41,7 @@ class ReplyLiked extends Notification
     public function toArray($notifiable)
     {
         return [
-             'message'=>auth()->user()->username.' likes your reply'.$this->reply->body,
+            'message'=>auth()->user()->username.' likes your reply'.$this->reply->body,
             'notifier' => auth()->user(),
             'link'=>$this->reply->path()
         ];

@@ -36,9 +36,9 @@ trait RecordActivity
     protected function recordActivity($event)
     {
         $this->activity()->create([
-           'user_id'=>auth()->id(),
+            'user_id'=>auth()->id(),
             'type'=>$this->getActivityType($event)
-       ]);
+        ]);
     }
 
     protected function getActivityType($event)
